@@ -21,7 +21,7 @@ export default function Home() {
 
         <Button
           as="a"
-          href="mailto:ApplauseFeedback@Ally.com?subject=Feedback for Ally Applause"
+          href="mailto:mossjmyron@gmail.com.com?subject=Feedback for Ally Applause"
           className="fixed bottom-4 left-4 z-50 rounded-full shadow-lg"
           size="sm"
           color="primary"
