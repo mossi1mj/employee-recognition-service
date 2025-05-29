@@ -2,6 +2,7 @@ from enum import Enum
 from pydantic import BaseModel, Field
 from typing import Optional
 from uuid import uuid4
+from datetime import datetime
 
 from models.user import User
 
@@ -63,3 +64,10 @@ class ApplauseResponse(BaseModel):
     category: ApplauseCategory
     message: Optional[str]
     headline: Optional[str]
+    created_at: datetime
+
+class ApplauseCreate(BaseModel):
+    sender_id: int
+    recipient_id: int
+    category: ApplauseCategory
+    message: Optional[str] = None

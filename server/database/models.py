@@ -1,6 +1,7 @@
+
 from pydantic import BaseModel
-from database.database import Base
-from sqlalchemy import Column, Integer, String, ForeignKey
+from .database import Base
+from sqlalchemy import Column, Integer, String, DateTime, func
 
 
 class ApplauseDB(Base):
@@ -12,3 +13,4 @@ class ApplauseDB(Base):
     category = Column(String)
     message = Column(String)
     headline = Column(String)
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)

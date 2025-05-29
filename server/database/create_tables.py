@@ -1,6 +1,6 @@
 import asyncio
-from database import engine, Base
-from models import ApplauseDB
+from .database import engine, Base
+from .models import ApplauseDB
 
 async def init_models():
     async with engine.begin() as conn:
