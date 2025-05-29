@@ -1,6 +1,7 @@
 from pydantic import BaseModel
+from database.database import Base
 from sqlalchemy import Column, Integer, String, ForeignKey
-from database import Base
+
 
 class ApplauseDB(Base):
     __tablename__ = "applause"
