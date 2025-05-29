@@ -1,19 +1,11 @@
 "use client";
 
+import { Feed } from "@/components/feed";
 import { ApplauseForm } from "@/components/form";
-import { useApplauses } from "@/hooks/useApplauses";
 import { Button } from "@heroui/button";
 import { MessageSquareShare } from "lucide-react";
 
 export default function Home() {
-  const { data, loading, error } = useApplauses({
-    senderId: null,
-    recipientId: null,
-  });
-
-  console.log("Applause Data:", data);
-  console.log("Loading:", loading);
-  console.log("Error:", error);
   return (
     // <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
     <section>
@@ -23,9 +15,8 @@ export default function Home() {
         </div>
 
         <div className="lg:col-span-1 space-y-6">
-          {/* <ApplauseFeed />
-          <ApplauseTable {...recentApplause} /> */}
-          test
+          <Feed />
+          {/* <ApplauseTable {...recentApplause} /> */}
         </div>
 
         <Button
