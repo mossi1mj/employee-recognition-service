@@ -6,4 +6,4 @@ router = APIRouter(prefix="/applause", tags=["applause"])
 
 @router.post("/", response_model=Applause)
 async def post_applause(applause: Applause):
-    return await applause_service(applause)
+    return await applause_service.create_applause(applause)
