@@ -3,12 +3,10 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { ApplauseCategory } from './ApplauseCategory';
-export type Applause = {
-    id?: string;
+export type ApplauseCreate = {
     sender_id: number;
     recipient_id: number;
     category: ApplauseCategory;
     message?: (string | null);
-    headline?: (string | null);
 };
 

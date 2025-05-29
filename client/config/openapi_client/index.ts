@@ -7,8 +7,8 @@ export { CancelablePromise, CancelError } from './core/CancelablePromise';
 export { OpenAPI } from './core/OpenAPI';
 export type { OpenAPIConfig } from './core/OpenAPI';
 
-export type { Applause } from './models/Applause';
 export { ApplauseCategory } from './models/ApplauseCategory';
+export type { ApplauseCreate } from './models/ApplauseCreate';
 export type { ApplauseResponse } from './models/ApplauseResponse';
 export type { CompanyInfo } from './models/CompanyInfo';
 export type { HTTPValidationError } from './models/HTTPValidationError';

@@ -11,5 +11,6 @@ export type ApplauseResponse = {
     category: ApplauseCategory;
     message: (string | null);
     headline: (string | null);
+    created_at: string;
 };
 
