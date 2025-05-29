@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --fix"
+    "lint": "eslint --fix",
+    "generate-client": "openapi --input http://127.0.0.1:8000/openapi.json --output config/openapi_client --client fetch"
   },
   "dependencies": {
     "@heroui/button": "2.2.19",
@@ -55,6 +56,7 @@
     "eslint-plugin-react-hooks": "5.2.0",
     "eslint-plugin-unused-imports": "4.1.4",
     "globals": "16.0.0",
+    "openapi-typescript-codegen": "^0.29.0",
     "postcss": "8.5.3",
     "prettier": "3.5.3",
     "tailwind-variants": "0.3.0",

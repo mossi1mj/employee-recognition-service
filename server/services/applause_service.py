@@ -1,7 +1,7 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from fastapi import HTTPException
-from models.applause import Applause
+from models.applause import Applause, ApplauseResponse
 from database.models import ApplauseDB
 from database.database import SessionLocal
 from services.user_service import fetch_user_by_id
@@ -35,21 +35,24 @@ async def create_applause(applause: Applause) -> Applause:
     return applause
 
 
-async def get_all_applauses() -> list[Applause]:
+async def get_all_applauses() -> list[ApplauseResponse]:
     async with SessionLocal() as session:
         result = await session.execute(select(ApplauseDB))
         db_applauses = result.scalars().all()
 
-    # Convert DB models to Pydantic Applause instances
     applauses = []
     for db_applause in db_applauses:
-        applause = Applause(
+        sender = await fetch_user_by_id(db_applause.sender_id)
+        recipient = await fetch_user_by_id(db_applause.recipient_id)
+
+        applause = ApplauseResponse(
             id=str(db_applause.id),
-            sender_id=db_applause.sender_id,
-            recipient_id=db_applause.recipient_id,
+            sender=sender,
+            recipient=recipient,
             category=db_applause.category,
             message=db_applause.message,
             headline=db_applause.headline
         )
         applauses.append(applause)
+
     return applauses

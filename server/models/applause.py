@@ -3,6 +3,8 @@ from pydantic import BaseModel, Field
 from typing import Optional
 from uuid import uuid4
 
+from models.user import User
+
 class ApplauseCategory(str, Enum):
     teamwork = "teamwork"
     innovation = "innovation"
@@ -53,3 +55,11 @@ class Applause(BaseModel):
 
         if not self.message or self.message.strip() == "":
             self.message = meta["default_message"]
+
+class ApplauseResponse(BaseModel):
+    id: str
+    sender: User
+    recipient: User
+    category: ApplauseCategory
+    message: Optional[str]
+    headline: Optional[str]
