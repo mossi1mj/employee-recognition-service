@@ -56,4 +56,32 @@ export class RecognitionService {
             },
         });
     }
+    /**
+     * Get User Recognitions
+     * @param userId
+     * @param limit
+     * @param skip
+     * @returns RecognitionResponse Successful Response
+     * @throws ApiError
+     */
+    public static getUserRecognitionsRecognitionUserUserIdGet(
+        userId: number,
+        limit?: (number | null),
+        skip?: number,
+    ): CancelablePromise<Array<RecognitionResponse>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/recognition/user/{user_id}',
+            path: {
+                'user_id': userId,
+            },
+            query: {
+                'limit': limit,
+                'skip': skip,
+            },
+            errors: {
+                422: `Validation Error`,
+            },
+        });
+    }
 }

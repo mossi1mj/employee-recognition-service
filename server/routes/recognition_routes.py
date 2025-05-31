@@ -22,3 +22,11 @@ async def get_recognitions(
         limit=limit,
         skip=skip,
     )
+
+@router.get("/user/{user_id}", response_model=List[RecognitionResponse])
+async def get_user_recognitions(
+    user_id: int,
+    limit: Optional[int] = Query(None, ge=0),
+    skip: int = Query(0, ge=0)
+):
+    return await recognition_service.get_user_recognitions(user_id, limit, skip)

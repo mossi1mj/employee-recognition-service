@@ -1,5 +1,6 @@
 from fastapi import Query
 from typing import Optional
+from services.utils import recognitions_to_response
 from sqlalchemy.future import select
 from sqlalchemy import select, desc
 from models.recognition import Recognition, RecognitionCreate, RecognitionResponse 
@@ -63,21 +64,21 @@ async def get_all_recognitions(
         result = await session.execute(query)
         db_recognitions = result.scalars().all()
 
-    # Map to response
-    recognitions = []
-    for db_recognition in db_recognitions:
-        sender = await fetch_user_by_id(db_recognition.sender_id)
-        recipient = await fetch_user_by_id(db_recognition.recipient_id)
+    return await recognitions_to_response(db_recognitions)
 
-        recognition = RecognitionResponse(
-            id=str(db_recognition.id),
-            sender=sender,
-            recipient=recipient,
-            category=db_recognition.category,
-            message=db_recognition.message,
-            headline=db_recognition.headline,
-            created_at=db_recognition.created_at
-        )
-        recognitions.append(recognition)
+async def get_user_recognitions(user_id: int, limit: Optional[int], skip: int):
+    async with SessionLocal() as session:
+        query = select(RecognitionDB).where(
+            (RecognitionDB.sender_id == user_id) |
+            (RecognitionDB.recipient_id == user_id)
+        ).order_by(desc(RecognitionDB.created_at))
 
-    return recognitions
+        if limit != 0:
+            query = query.offset(skip)
+            if limit is not None:
+                query = query.limit(limit)
+
+        result = await session.execute(query)
+        db_recognitions = result.scalars().all()
+    
+    return await recognitions_to_response(db_recognitions)

@@ -1,29 +1,46 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import useSWR from "swr";
 
 import {
   RecognitionResponse,
   RecognitionService,
 } from "@/config/openapi_client";
 
-type UseApplausesParams = {
+interface UseRecognitionsOptions {
   senderId?: number | null;
   recipientId?: number | null;
+  limit?: number | null;
+  skip?: number | null;
+}
+
+const fetchRecognitions = async ({
+  senderId,
+  recipientId,
+  limit,
+  skip,
+}: UseRecognitionsOptions): Promise<RecognitionResponse[]> => {
+  return RecognitionService.getRecognitionsRecognitionGet(
+    senderId,
+    recipientId,
+    limit,
+    skip
+  );
 };
 
-export function useRecognitions({ senderId, recipientId }: UseApplausesParams) {
-  const [data, setData] = useState<RecognitionResponse[] | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<Error | null>(null);
+export const useRecognitions = ({
+  senderId = null,
+  recipientId = null,
+  limit = 100,
+  skip = 0,
+}: UseRecognitionsOptions = {}) => {
+  const key = ["recognitions-feed", senderId, recipientId, limit, skip];
 
-  useEffect(() => {
-    setLoading(true);
-    RecognitionService.getRecognitionsRecognitionGet(senderId, recipientId)
-      .then(setData)
-      .catch(setError)
-      .finally(() => setLoading(false));
-  }, [senderId, recipientId]);
+  const { data, error, isLoading } = useSWR(key, () =>
+    fetchRecognitions({ senderId, recipientId, limit, skip })
+  );
 
-  return { data, loading, error };
-}
+  return {
+    recognitions: data,
+    error,
+    isLoading,
+  };
+};

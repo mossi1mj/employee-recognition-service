@@ -10,8 +10,11 @@ import {
   CardHeader,
   Skeleton,
 } from "@heroui/react";
-import { useRecognitions } from "@/hooks/useRecognitions";
+
 import RecognitionModal from "./modal";
+
+import { useRecognitions } from "@/hooks/useRecognitions";
+
 
 const FeedSkeleton: React.FC = () => (
   <Card className="mb-2">
@@ -28,7 +31,7 @@ const FeedSkeleton: React.FC = () => (
 );
 
 export const Feed: React.FC = () => {
-  const { data, loading, error } = useRecognitions({
+  const { recognitions, isLoading, error } = useRecognitions({
     senderId: null,
     recipientId: null,
   });
@@ -86,7 +89,7 @@ export const Feed: React.FC = () => {
                 </CardBody>
               </Card>
             </motion.div>
-          ) : loading ? (
+          ) : isLoading ? (
             <div className="space-y-2">
               {[...Array(5)].map((_, index) => (
                 <FeedSkeleton key={index} />
@@ -95,7 +98,7 @@ export const Feed: React.FC = () => {
           ) : (
             <div className="space-y-2">
               <AnimatePresence initial={false}>
-                {data?.slice(0, 5).map((item, _) => (
+                {recognitions?.slice(0, 5).map((item, _) => (
                   <motion.div
                     key={item.created_at}
                     initial={{ opacity: 0, y: -20, height: 0 }}
@@ -126,16 +129,6 @@ export const Feed: React.FC = () => {
                             </p>
                           </div>
                         </div>
-                        {/* {categoryInfo && (
-                          <div className="flex-shrink-0 ml-2">
-                            <Image
-                              src={categoryInfo.icon}
-                              alt={categoryInfo.displayName}
-                              width={30}
-                              height={30}
-                            />
-                          </div>
-                        )} */}
                       </CardHeader>
                     </Card>
                   </motion.div>
@@ -146,12 +139,12 @@ export const Feed: React.FC = () => {
         </CardBody>
       </Card>
       <RecognitionModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        recognitionData={data || []}
-        isLoading={loading}
-        error={error}
         page
+        error={error}
+        isLoading={isLoading}
+        isOpen={isModalOpen}
+        recognitionData={recognitions || []}
+        onClose={() => setIsModalOpen(false)}
       />
     </>
   );
