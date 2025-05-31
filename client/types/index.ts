@@ -27,3 +27,9 @@ export type Category = {
   shortDescription: string;
   longDescription: string;
 };
+
+export type Country = {
+  name: string;
+  code: string;
+  iso: string;
+};
