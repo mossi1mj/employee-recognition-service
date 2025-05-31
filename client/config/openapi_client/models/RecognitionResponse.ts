@@ -2,13 +2,13 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { ApplauseCategory } from './ApplauseCategory';
+import type { RecognitionCategory } from './RecognitionCategory';
 import type { User } from './User';
-export type ApplauseResponse = {
+export type RecognitionResponse = {
     id: string;
     sender: User;
     recipient: User;
-    category: ApplauseCategory;
+    category: RecognitionCategory;
     message: (string | null);
     headline: (string | null);
     created_at: string;

@@ -2,24 +2,24 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { ApplauseCreate } from '../models/ApplauseCreate';
-import type { ApplauseResponse } from '../models/ApplauseResponse';
+import type { RecognitionCreate } from '../models/RecognitionCreate';
+import type { RecognitionResponse } from '../models/RecognitionResponse';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
-export class ApplauseService {
+export class RecognitionService {
     /**
-     * Post Applause
+     * Post Recognition
      * @param requestBody
-     * @returns ApplauseResponse Successful Response
+     * @returns RecognitionResponse Successful Response
      * @throws ApiError
      */
-    public static postApplauseApplausePost(
-        requestBody: ApplauseCreate,
-    ): CancelablePromise<ApplauseResponse> {
+    public static postRecognitionRecognitionPost(
+        requestBody: RecognitionCreate,
+    ): CancelablePromise<RecognitionResponse> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/applause/',
+            url: '/recognition/',
             body: requestBody,
             mediaType: 'application/json',
             errors: {
@@ -28,19 +28,19 @@ export class ApplauseService {
         });
     }
     /**
-     * Get Applauses
+     * Get Recognitions
      * @param senderId
      * @param recipientId
-     * @returns ApplauseResponse Successful Response
+     * @returns RecognitionResponse Successful Response
      * @throws ApiError
      */
-    public static getApplausesApplauseGet(
+    public static getRecognitionsRecognitionGet(
         senderId?: (number | null),
         recipientId?: (number | null),
-    ): CancelablePromise<Array<ApplauseResponse>> {
+    ): CancelablePromise<Array<RecognitionResponse>> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/applause/',
+            url: '/recognition/',
             query: {
                 'sender_id': senderId,
                 'recipient_id': recipientId,

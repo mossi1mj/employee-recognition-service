@@ -2,11 +2,11 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { ApplauseCategory } from './ApplauseCategory';
-export type ApplauseCreate = {
+import type { RecognitionCategory } from './RecognitionCategory';
+export type RecognitionCreate = {
     sender_id: number;
     recipient_id: number;
-    category: ApplauseCategory;
+    category: RecognitionCategory;
     message?: (string | null);
 };
 

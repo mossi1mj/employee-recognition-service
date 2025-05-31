@@ -6,7 +6,7 @@ from datetime import datetime
 
 from models.user import User
 
-class ApplauseCategory(str, Enum):
+class RecognitionCategory(str, Enum):
     teamwork = "teamwork"
     innovation = "innovation"
     leadership = "leadership"
@@ -41,11 +41,11 @@ CATEGORY_METADATA = {
     }
 }
 
-class Applause(BaseModel):
+class Recognition(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid4()))
     sender_id: int
     recipient_id: int
-    category: ApplauseCategory
+    category: RecognitionCategory
     message: Optional[str] = None
     headline: Optional[str] = None
 
@@ -57,17 +57,17 @@ class Applause(BaseModel):
         if not self.message or self.message.strip() == "":
             self.message = meta["default_message"]
 
-class ApplauseResponse(BaseModel):
+class RecognitionResponse(BaseModel):
     id: str
     sender: User
     recipient: User
-    category: ApplauseCategory
+    category: RecognitionCategory
     message: Optional[str]
     headline: Optional[str]
     created_at: datetime
 
-class ApplauseCreate(BaseModel):
+class RecognitionCreate(BaseModel):
     sender_id: int
     recipient_id: int
-    category: ApplauseCategory
+    category: RecognitionCategory
     message: Optional[str] = None

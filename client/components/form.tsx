@@ -101,7 +101,7 @@ export const Form: React.FC = () => {
           variant="solid"
           endContent={<SendHorizonal size={18} />}
         >
-          Send Applause
+          Send Recognition
         </Button>
       </CardFooter>
     </Card>

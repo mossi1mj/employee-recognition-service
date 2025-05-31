@@ -16,12 +16,12 @@ export default function Home() {
 
         <div className="lg:col-span-1 space-y-6">
           <Feed />
-          {/* <ApplauseTable {...recentApplause} /> */}
+          {/* <RecognitionTable {...recentRecognition} /> */}
         </div>
 
         <Button
           as="a"
-          href="mailto:mossjmyron@gmail.com.com?subject=Feedback for Ally Applause"
+          href="mailto:mossjmyron@gmail.com.com?subject=Feedback for Employee Recognition Platform"
           className="fixed bottom-4 left-4 z-50 rounded-full shadow-lg"
           size="sm"
           color="primary"

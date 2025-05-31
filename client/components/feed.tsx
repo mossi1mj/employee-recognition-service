@@ -10,8 +10,8 @@ import {
   CardHeader,
   Skeleton,
 } from "@heroui/react";
-import { useApplauses } from "@/hooks/useApplauses";
-import ApplauseModal from "./modal";
+import { useRecognitions } from "@/hooks/useRecognitions";
+import RecognitionModal from "./modal";
 
 const FeedSkeleton: React.FC = () => (
   <Card className="mb-2">
@@ -28,7 +28,7 @@ const FeedSkeleton: React.FC = () => (
 );
 
 export const Feed: React.FC = () => {
-  const { data, loading, error } = useApplauses({
+  const { data, loading, error } = useRecognitions({
     senderId: null,
     recipientId: null,
   });
@@ -108,7 +108,7 @@ export const Feed: React.FC = () => {
                       opacity: { duration: 0.2 },
                     }}
                   >
-                    {/* <ApplauseCard applause={item} message={false} /> */}
+                    {/* <RecognitionCard recognition={item} message={false} /> */}
                     <Card className="w-full mb-1">
                       <CardHeader className="flex justify-between items-center">
                         <div className="flex items-center gap-3 flex-grow">
@@ -145,10 +145,10 @@ export const Feed: React.FC = () => {
           )}
         </CardBody>
       </Card>
-      <ApplauseModal
+      <RecognitionModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        applauseData={data || []}
+        recognitionData={data || []}
         isLoading={loading}
         error={error}
         page

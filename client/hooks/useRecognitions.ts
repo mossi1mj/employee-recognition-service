@@ -1,24 +1,25 @@
 "use client";
 
-import type { ApplauseResponse } from "@/config/openapi_client/models/ApplauseResponse";
-
 import { useEffect, useState } from "react";
 
-import { ApplauseService } from "@/config/openapi_client/services/ApplauseService";
+import {
+  RecognitionResponse,
+  RecognitionService,
+} from "@/config/openapi_client";
 
 type UseApplausesParams = {
   senderId?: number | null;
   recipientId?: number | null;
 };
 
-export function useApplauses({ senderId, recipientId }: UseApplausesParams) {
-  const [data, setData] = useState<ApplauseResponse[] | null>(null);
+export function useRecognitions({ senderId, recipientId }: UseApplausesParams) {
+  const [data, setData] = useState<RecognitionResponse[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     setLoading(true);
-    ApplauseService.getApplausesApplauseGet(senderId, recipientId)
+    RecognitionService.getRecognitionsRecognitionGet(senderId, recipientId)
       .then(setData)
       .catch(setError)
       .finally(() => setLoading(false));
