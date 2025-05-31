@@ -1,6 +1,5 @@
-from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from fastapi import HTTPException
+from sqlalchemy import select, desc
 from models.applause import Applause, ApplauseCreate, ApplauseResponse
 from database.models import ApplauseDB
 from database.database import SessionLocal
@@ -40,11 +39,17 @@ async def create_applause(applause_data: ApplauseCreate) -> ApplauseResponse:
         created_at=db_applause.created_at
     )
 
-
-
 async def get_all_applauses(sender_id: int = None, recipient_id: int = None) -> list[ApplauseResponse]:
     async with SessionLocal() as session:
-        result = await session.execute(select(ApplauseDB))
+        query = select(ApplauseDB).order_by(desc(ApplauseDB.created_at))
+
+        # Optionally filter by sender or recipient
+        if sender_id is not None:
+            query = query.where(ApplauseDB.sender_id == sender_id)
+        if recipient_id is not None:
+            query = query.where(ApplauseDB.recipient_id == recipient_id)
+
+        result = await session.execute(query)
         db_applauses = result.scalars().all()
 
     applauses = []
