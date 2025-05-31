@@ -25,10 +25,11 @@ import React, { FormEvent, useEffect, useState, useTransition } from "react";
 import { countries } from "@/config/county_codes";
 import { useUserContext } from "@/context/UserContext";
 import { auth } from "@/firebase";
-import { UsersService } from "@/config/openapi_client";
+import { RecognitionService, UsersService } from "@/config/openapi_client";
 
 export const Otplogin: React.FC = () => {
-  const { isAuthenticated, setIsAuthenticated, setUser } = useUserContext();
+  const { isAuthenticated, setIsAuthenticated, setUser, setRecognitions } =
+    useUserContext();
   const [otp, setOtp] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("us"); // Default to United States
@@ -134,6 +135,14 @@ export const Otplogin: React.FC = () => {
 
         setUser(user);
         setIsAuthenticated(true);
+
+        const recognitions =
+          await RecognitionService.getUserRecognitionsRecognitionUserUserIdGet(
+            user.id,
+            5,
+          );
+
+        setRecognitions(recognitions);
       } catch (err: any) {
         console.log("Error verifying OTP:", err);
         setError("Invalid OTP. Please try again.");

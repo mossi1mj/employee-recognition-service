@@ -33,3 +33,10 @@ export type Country = {
   code: string;
   iso: string;
 };
+
+export type UseRecognitionsOptions = {
+  senderId?: number | null;
+  recipientId?: number | null;
+  limit?: number | null;
+  skip?: number | null;
+}

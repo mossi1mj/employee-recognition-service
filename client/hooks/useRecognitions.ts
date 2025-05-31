@@ -4,13 +4,7 @@ import {
   RecognitionResponse,
   RecognitionService,
 } from "@/config/openapi_client";
-
-interface UseRecognitionsOptions {
-  senderId?: number | null;
-  recipientId?: number | null;
-  limit?: number | null;
-  skip?: number | null;
-}
+import { UseRecognitionsOptions } from "@/types";
 
 const fetchRecognitions = async ({
   senderId,

@@ -6,7 +6,6 @@ import {
   RecognitionService,
 } from "@/config/openapi_client";
 
-
 export function useCreateRecognition() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
