@@ -16,16 +16,18 @@ import clsx from "clsx";
 import { Switch } from "@heroui/switch";
 import { useTheme } from "next-themes";
 import { useIsSSR } from "@react-aria/ssr";
-import { Moon, Sun } from "lucide-react";
+import { Github, Moon, Sun } from "lucide-react";
 
 import { Logo } from "@/components/icons";
 import { siteConfig } from "@/config/site";
 import {
   Avatar,
+  Button,
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
+  Tooltip,
 } from "@heroui/react";
 import { useUserContext } from "@/context/UserContext";
 
@@ -73,16 +75,17 @@ export const Navbar = () => {
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
-        <Switch
-          endContent={<Moon size={16} />}
-          isSelected={theme === "light" || isSSR}
-          size="sm"
-          startContent={<Sun size={16} />}
-          onValueChange={onChange}
-        />
-      </NavbarContent>
-
-      <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
+        <Tooltip placement="bottom" content="GitHub Repository">
+          <NextLink
+            href="https://github.com/mossi1mj/employee-recognition-service"
+            target="_blank"
+            passHref
+          >
+            <Button isIconOnly variant="light" aria-label="GitHub">
+              <Github size={20} />
+            </Button>
+          </NextLink>
+        </Tooltip>
         <Switch
           endContent={<Moon size={16} />}
           isSelected={theme === "light" || isSSR}
@@ -97,7 +100,7 @@ export const Navbar = () => {
                 isBordered
                 as="button"
                 className="transition-transform"
-                color="secondary"
+                color="default"
                 name={user?.firstName || "User"}
                 size="sm"
                 src={user?.image}
@@ -107,7 +110,7 @@ export const Navbar = () => {
                 isBordered
                 as="button"
                 className="transition-transform"
-                color="secondary"
+                color="default"
                 name="User"
                 size="sm"
                 src="https://avatars.githubusercontent.com/u/1?v=4"
@@ -123,6 +126,16 @@ export const Navbar = () => {
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
+      </NavbarContent>
+
+      <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
+        <Switch
+          endContent={<Moon size={16} />}
+          isSelected={theme === "light" || isSSR}
+          size="sm"
+          startContent={<Sun size={16} />}
+          onValueChange={onChange}
+        />
         <NavbarMenuToggle />
       </NavbarContent>
 
