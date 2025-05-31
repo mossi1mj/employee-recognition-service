@@ -31,12 +31,16 @@ export class RecognitionService {
      * Get Recognitions
      * @param senderId
      * @param recipientId
+     * @param limit
+     * @param skip
      * @returns RecognitionResponse Successful Response
      * @throws ApiError
      */
     public static getRecognitionsRecognitionGet(
         senderId?: (number | null),
         recipientId?: (number | null),
+        limit?: (number | null),
+        skip?: (number | null),
     ): CancelablePromise<Array<RecognitionResponse>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -44,6 +48,8 @@ export class RecognitionService {
             query: {
                 'sender_id': senderId,
                 'recipient_id': recipientId,
+                'limit': limit,
+                'skip': skip,
             },
             errors: {
                 422: `Validation Error`,

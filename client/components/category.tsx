@@ -13,8 +13,6 @@ import Focus from "../public/icons/AA_You did it.svg";
 
 import { categories, Categories } from "@/types";
 
-
-
 export const staticCategories: Categories[] = [
   {
     name: categories.GOING_ABOVE_AND_BEYOND,
@@ -125,10 +123,10 @@ export const Category: React.FC<CategoryProps> = ({
         >
           <div className="flex flex-col items-center justify-center h-full mt-1">
             <Image
-              src={category.icon}
               alt={category.displayName}
-              width={75}
               height={75}
+              src={category.icon}
+              width={75}
             />
             <span className="text-body-sm font-semibold mt-2 text-center hidden sm:block">
               {category.displayName}

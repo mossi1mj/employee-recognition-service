@@ -1,3 +1,5 @@
+from fastapi import Query
+from typing import Optional
 from sqlalchemy.future import select
 from sqlalchemy import select, desc
 from models.recognition import Recognition, RecognitionCreate, RecognitionResponse 
@@ -39,19 +41,29 @@ async def create_recognition(recognition_data: RecognitionCreate) -> Recognition
         created_at=db_recognition.created_at
     )
 
-async def get_all_recognitions(sender_id: int = None, recipient_id: int = None) -> list[RecognitionResponse]:
+async def get_all_recognitions(
+    sender_id: Optional[int] = None,
+    recipient_id: Optional[int] = None,
+    limit: Optional[int] = Query(None, ge=0),
+    skip: Optional[int] = Query(0, ge=0)
+) -> list[RecognitionResponse]:
     async with SessionLocal() as session:
         query = select(RecognitionDB).order_by(desc(RecognitionDB.created_at))
 
-        # Optionally filter by sender or recipient
+        # Filter by sender and/or recipient
         if sender_id is not None:
             query = query.where(RecognitionDB.sender_id == sender_id)
         if recipient_id is not None:
             query = query.where(RecognitionDB.recipient_id == recipient_id)
 
+        # Apply pagination only if limit is not 0
+        if limit != 0:
+            query = query.offset(skip).limit(limit)
+
         result = await session.execute(query)
         db_recognitions = result.scalars().all()
 
+    # Map to response
     recognitions = []
     for db_recognition in db_recognitions:
         sender = await fetch_user_by_id(db_recognition.sender_id)

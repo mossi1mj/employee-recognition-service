@@ -12,6 +12,13 @@ async def post_recognition(recognition: RecognitionCreate):
 @router.get("/", response_model=List[RecognitionResponse])
 async def get_recognitions(
     sender_id: Optional[int] = Query(None),
-    recipient_id: Optional[int] = Query(None)
+    recipient_id: Optional[int] = Query(None),
+    limit: Optional[int] = Query(None, ge=0),
+    skip: Optional[int] = Query(0, ge=0),
 ):
-    return await recognition_service.get_all_recognitions(sender_id, recipient_id)
+    return await recognition_service.get_all_recognitions(
+        sender_id=sender_id,
+        recipient_id=recipient_id,
+        limit=limit,
+        skip=skip,
+    )
