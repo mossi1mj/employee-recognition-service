@@ -15,10 +15,11 @@ import {
 import { SendHorizonal, UserRoundSearch } from "lucide-react";
 import { useTheme } from "next-themes";
 import { StaticImageData } from "next/image";
-import { CategorySelection } from "./category-selection";
+import { Category } from "./category";
 
 
-const ApplauseFormSkeleton: React.FC = () => (
+
+const FormSkeleton: React.FC = () => (
   <Card>
     <CardHeader>
       <Skeleton className="rounded-lg">
@@ -59,13 +60,13 @@ const animals = [
   { label: "Giraffe", key: "giraffe", description: "The tallest land animal" },
 ];
 
-export const ApplauseForm: React.FC = () => {
+export const Form: React.FC = () => {
   const { theme } = useTheme();
 
   return (
     <Card className="mb-6">
       <CardHeader className="pb-0 pt-4 px-4">
-        <h2 className="text-2xl font-bold">Give Applause</h2>
+        <h2 className="text-2xl font-bold">Give Recognition</h2>
       </CardHeader>
       <CardBody className="px-4">
         <Autocomplete
@@ -73,7 +74,7 @@ export const ApplauseForm: React.FC = () => {
           defaultItems={animals}
           label="Employee"
           labelPlacement="outside"
-          placeholder="Who's your applause superstar?"
+          placeholder="Who's the employee superstar?"
           startContent={<UserRoundSearch color="gray" />}
           variant="underlined"
         >
@@ -81,7 +82,7 @@ export const ApplauseForm: React.FC = () => {
             <AutocompleteItem key={item.key}>{item.label}</AutocompleteItem>
           )}
         </Autocomplete>
-        <CategorySelection
+        <Category
           isDark={theme === "dark"}
           onCategorySelect={(category: any) => {
             // Optional: handle the selection in the parent component if needed
@@ -90,14 +91,13 @@ export const ApplauseForm: React.FC = () => {
         />
         <Textarea
           variant="underlined"
-          placeholder="Enter your applause message..."
+          placeholder="Enter your recognition message..."
           label="Message"
         />
       </CardBody>
       <CardFooter className="pt-0 pb-4 px-4 flex justify-end">
         <Button
           color="primary"
-          radius="full"
           variant="solid"
           endContent={<SendHorizonal size={18} />}
         >

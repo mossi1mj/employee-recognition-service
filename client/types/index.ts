@@ -5,7 +5,7 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
   size?: number;
 };
 
-export enum category {
+export enum categories {
   GOING_ABOVE_AND_BEYOND = "GOING_ABOVE_AND_BEYOND",
   INNOVATIVE_THINKING = "INNOVATIVE_THINKING",
   TEAMWORK_AND_COLLAB = "TEAMWORK_AND_COLLAB",
@@ -19,7 +19,7 @@ export type Headline = {
   bold: boolean;
 };
 
-export type Category = {
+export type Categories = {
   name: string;
   icon: StaticImageData;
   displayName: string;

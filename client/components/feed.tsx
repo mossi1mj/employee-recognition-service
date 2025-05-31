@@ -64,7 +64,6 @@ export const Feed: React.FC = () => {
             </div>
             <Button
               variant="ghost"
-              radius="full"
               size="sm"
               color="primary"
               onPress={openModal}

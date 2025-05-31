@@ -11,11 +11,13 @@ import Teamwork from "../public/icons/AA_Teamwork.svg";
 import Better from "../public/icons/AA_You make us better.svg";
 import Focus from "../public/icons/AA_You did it.svg";
 
-import { Category, category } from "@/types";
+import { categories, Categories } from "@/types";
 
-export const staticCategories: Category[] = [
+
+
+export const staticCategories: Categories[] = [
   {
-    name: category.GOING_ABOVE_AND_BEYOND,
+    name: categories.GOING_ABOVE_AND_BEYOND,
     icon: ThankYou,
     displayName: "Thank you",
     headline: [{ text: "Sending thanks for great work.", bold: false }],
@@ -25,7 +27,7 @@ export const staticCategories: Category[] = [
       "Palms together, people. Your teammate is sending a big thanks your way.",
   },
   {
-    name: category.INNOVATIVE_THINKING,
+    name: categories.INNOVATIVE_THINKING,
     icon: AboveBeyond,
     displayName: "Above and beyond",
     headline: [
@@ -36,7 +38,7 @@ export const staticCategories: Category[] = [
       "They say the cream rises, and so do you - thanks for going above and beyond.",
   },
   {
-    name: category.TEAMWORK_AND_COLLAB,
+    name: categories.TEAMWORK_AND_COLLAB,
     icon: Teamwork,
     displayName: "Teamwork",
     headline: [{ text: "Celebrating excellent collaboration.", bold: false }],
@@ -45,7 +47,7 @@ export const staticCategories: Category[] = [
       "You're a great teammate, and your coworkers want you to know it. Keep up the amazing collab skills.",
   },
   {
-    name: category.PROBLEM_SOLVING,
+    name: categories.PROBLEM_SOLVING,
     icon: Awesome,
     displayName: "You're awesome",
     headline: [
@@ -57,7 +59,7 @@ export const staticCategories: Category[] = [
       "You're amazing, and your teammates want you to know they love what you do. Great job!",
   },
   {
-    name: category.CUSTOMER_FOCUS,
+    name: categories.CUSTOMER_FOCUS,
     icon: Better,
     displayName: "You make us better",
     headline: [
@@ -68,7 +70,7 @@ export const staticCategories: Category[] = [
       "You bring the Ally spirit and make us better with what you do and how you do it.",
   },
   {
-    name: category.EFFICIENCY_AND_PRODUCTVITY,
+    name: categories.EFFICIENCY_AND_PRODUCTVITY,
     icon: Focus,
     displayName: "Focused in",
     headline: [
@@ -80,12 +82,12 @@ export const staticCategories: Category[] = [
   },
 ];
 
-interface CategorySelectionProps {
+interface CategoryProps {
   onCategorySelect?: (category: string) => void;
   isDark: boolean;
 }
 
-export const CategorySelection: React.FC<CategorySelectionProps> = ({
+export const Category: React.FC<CategoryProps> = ({
   onCategorySelect,
   isDark,
 }) => {

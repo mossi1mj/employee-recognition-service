@@ -1,10 +1,10 @@
 "use client";
 
-import { countries } from "@/config/county_codes";
-import { useUserContext } from "@/context/UserContext";
-import { auth } from "@/firebase";
-import { useCountryCodes } from "@/hooks/useCountryCodes";
-import { Country } from "@/types";
+import {
+  ConfirmationResult,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+} from "firebase/auth";
 import {
   Alert,
   Avatar,
@@ -20,16 +20,15 @@ import {
   SelectItem,
   Spinner,
 } from "@heroui/react";
-import { verify } from "crypto";
-import {
-  ConfirmationResult,
-  RecaptchaVerifier,
-  signInWithPhoneNumber,
-} from "firebase/auth";
 import React, { FormEvent, useEffect, useState, useTransition } from "react";
 
+import { countries } from "@/config/county_codes";
+import { useUserContext } from "@/context/UserContext";
+import { auth } from "@/firebase";
+import { UsersService } from "@/config/openapi_client";
+
 export const Otplogin: React.FC = () => {
-  const { isAuthenticated, setIsAuthenticated } = useUserContext();
+  const { isAuthenticated, setIsAuthenticated, setUser } = useUserContext();
   const [otp, setOtp] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("us"); // Default to United States
@@ -75,6 +74,7 @@ export const Otplogin: React.FC = () => {
 
   useEffect(() => {
     const completedOtp = otp.length === 6;
+
     if (completedOtp) {
       verifyOtp();
     }
@@ -129,6 +129,10 @@ export const Otplogin: React.FC = () => {
     startTransition(async () => {
       try {
         await confirmationResult?.confirm(otp);
+        const randomUserId = Math.floor(Math.random() * 10) + 1;
+        const user = await UsersService.getUserByIdUsersUserIdGet(randomUserId);
+
+        setUser(user);
         setIsAuthenticated(true);
       } catch (err: any) {
         console.log("Error verifying OTP:", err);
@@ -164,7 +168,7 @@ export const Otplogin: React.FC = () => {
                   startContent={
                     <Avatar
                       alt={selected?.name}
-                      className="w-5 h-5"
+                      className="w-6 h-5"
                       src={`https://flagcdn.com/w40/${selected?.iso}.png`}
                     />
                   }
@@ -224,9 +228,8 @@ export const Otplogin: React.FC = () => {
                   : "Send OTP"}
             </Button>
 
-            {success && (
-              <Alert color="success" title="" description={success} />
-            )}
+            {error && <Alert color="danger" description={error} />}
+            {success && <Alert color="success" description={success} />}
           </ModalBody>
         </ModalContent>
       </Modal>

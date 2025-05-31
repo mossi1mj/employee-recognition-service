@@ -20,10 +20,23 @@ import { Moon, Sun } from "lucide-react";
 
 import { Logo } from "@/components/icons";
 import { siteConfig } from "@/config/site";
+import {
+  Avatar,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from "@heroui/react";
+import { useUserContext } from "@/context/UserContext";
 
 export const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const isSSR = useIsSSR();
+
+  const { user, isAuthenticated } = useUserContext();
+
+  console.log("User in Navbar:", user);
+  console.log("Is Authenticated in Navbar:", isAuthenticated);
 
   const onChange = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
@@ -77,6 +90,39 @@ export const Navbar = () => {
           startContent={<Sun size={16} />}
           onValueChange={onChange}
         />
+        <Dropdown placement="bottom-end">
+          <DropdownTrigger>
+            {user ? (
+              <Avatar
+                isBordered
+                as="button"
+                className="transition-transform"
+                color="secondary"
+                name={user?.firstName || "User"}
+                size="sm"
+                src={user?.image}
+              />
+            ) : (
+              <Avatar
+                isBordered
+                as="button"
+                className="transition-transform"
+                color="secondary"
+                name="User"
+                size="sm"
+                src="https://avatars.githubusercontent.com/u/1?v=4"
+              />
+            )}
+          </DropdownTrigger>
+          <DropdownMenu aria-label="Profile Actions" variant="flat">
+            <DropdownItem key="profile" className="h-14 gap-2">
+              <p className="font-semibold">Signed in as</p>
+              {user && (
+                <p className="font-semibold">{`${user?.firstName} ${user?.lastName}`}</p>
+              )}
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
         <NavbarMenuToggle />
       </NavbarContent>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { Feed } from "@/components/feed";
-import { ApplauseForm } from "@/components/form";
+import { Form } from "@/components/form";
 import { Button } from "@heroui/button";
 import { MessageSquareShare } from "lucide-react";
 
@@ -11,7 +11,7 @@ export default function Home() {
     <section>
       <div className="container mx-auto px-4 py-1 grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className="lg:col-span-1">
-          <ApplauseForm />
+          <Form />
         </div>
 
         <div className="lg:col-span-1 space-y-6">
