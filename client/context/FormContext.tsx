@@ -13,14 +13,10 @@ const defaultValues: FormValues = {
 };
 
 const RecognitionFormContext = createContext<FormContextProps | undefined>(
-  undefined,
+  undefined
 );
 
-export const RecognitionFormProvider = ({
-  children,
-}: {
-  children: ReactNode;
-}) => {
+export const FormProvider = ({ children }: { children: ReactNode }) => {
   const [values, setValues] = useState<FormValues>(defaultValues);
 
   const setRecipientId = (id: number) =>
