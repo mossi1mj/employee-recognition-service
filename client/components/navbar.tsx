@@ -35,10 +35,7 @@ export const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const isSSR = useIsSSR();
 
-  const { user, isAuthenticated } = useUserContext();
-
-  console.log("User in Navbar:", user);
-  console.log("Is Authenticated in Navbar:", isAuthenticated);
+  const { user } = useUserContext();
 
   const onChange = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");

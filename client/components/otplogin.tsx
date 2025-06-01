@@ -6,6 +6,7 @@ import {
   signInWithPhoneNumber,
 } from "firebase/auth";
 import {
+  addToast,
   Alert,
   Avatar,
   Button,
@@ -69,7 +70,10 @@ export const Otplogin: React.FC = () => {
         setRecaptchaVerifier(verifier);
       })
       .catch((err) => {
-        console.error("Recaptcha render error:", err);
+        addToast({
+          title: "Failed to initialize recaptcha. Please try again.",
+          description: err.message,
+        });
       });
   }, [recaptchaVerifier]);
 
@@ -104,7 +108,10 @@ export const Otplogin: React.FC = () => {
         setConfirmationResult(confirmationResult);
         setSuccess("OTP sent successfully!");
       } catch (err: any) {
-        console.log("Error sending OTP:", err);
+        addToast({
+          title: "Failed to send OTP",
+          description: err.message,
+        });
         setReset(0);
 
         if (err.code === "auth/invalid-phone-number") {
@@ -139,12 +146,15 @@ export const Otplogin: React.FC = () => {
         const recognitions =
           await RecognitionService.getUserRecognitionsRecognitionUserUserIdGet(
             user.id,
-            5,
+            5
           );
 
         setRecognitions(recognitions);
       } catch (err: any) {
-        console.log("Error verifying OTP:", err);
+        addToast({
+          title: "OTP Verification Failed",
+          description: err.message,
+        });
         setError("Invalid OTP. Please try again.");
       }
     });

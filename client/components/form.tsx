@@ -2,6 +2,7 @@
 
 import React from "react";
 import {
+  addToast,
   Button,
   Card,
   CardBody,
@@ -21,8 +22,6 @@ import { useSubmitRecognition } from "@/hooks/useSubmitRecognition";
 export const Form: React.FC = () => {
   const { values, setMessage } = useRecognitionForm();
   const { submit, loading } = useSubmitRecognition();
-
-  console.log("Form values:", values);
 
   return (
     <Card className="mb-6">

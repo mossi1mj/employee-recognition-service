@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 
 import { UsersService, User } from "@/config/openapi_client";
+import { addToast } from "@heroui/react";
 
 export const useUserSearch = () => {
   const [results, setResults] = useState<User[]>([]);
@@ -13,7 +14,10 @@ export const useUserSearch = () => {
 
       setResults(users);
     } catch (err) {
-      console.error("Failed to search users:", err);
+      addToast({
+        title: "Failed to search for users. Please try again.",
+        description: err instanceof Error ? err.message : "Unknown error",
+      });
     } finally {
       setIsLoading(false);
     }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { Key, useEffect, useState } from "react";
 import { Autocomplete, AutocompleteItem } from "@heroui/react";
 import { UserRoundSearch } from "lucide-react";
 
@@ -7,29 +7,32 @@ import { useRecognitionForm } from "@/context/FormContext";
 
 const Input: React.FC = () => {
   const { results, search, isLoading } = useUserSearch();
-  const { setRecipientId } = useRecognitionForm();
-  const [inputValue, setInputValue] = useState("");
+  const { input, setInput, setRecipientId } = useRecognitionForm();
+  const [selectedKey, setSelectedKey] = useState<Key | null>(null);
 
-  const handleSelection = (key: React.Key | null) => {
+  const handleSelection = (key: Key | null) => {
+    setSelectedKey(key as string | null);
+
     if (key === null) return;
 
     const selected = results.find((u) => u.id.toString() === key);
 
     if (selected) {
       setRecipientId(selected.id);
+      setInput(`${selected.firstName} ${selected.lastName}`);
     }
   };
 
   useEffect(() => {
-    if (inputValue.length > 1) {
-      search(inputValue);
+    if (input.length > 1) {
+      search(input);
     }
-  }, [inputValue, search]);
+  }, [input, search]);
 
   return (
     <Autocomplete
       isRequired
-      inputValue={inputValue}
+      inputValue={input}
       isLoading={isLoading}
       items={results.map((user) => ({
         key: user.id.toString(),
@@ -38,9 +41,10 @@ const Input: React.FC = () => {
       label="Employee"
       labelPlacement="outside"
       placeholder="Who's the employee superstar?"
+      selectedKey={selectedKey}
       startContent={<UserRoundSearch color="gray" />}
       variant="underlined"
-      onInputChange={setInputValue}
+      onInputChange={setInput}
       onSelectionChange={handleSelection}
     >
       {(item) => (

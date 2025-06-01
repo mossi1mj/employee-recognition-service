@@ -2,10 +2,24 @@
 
 import { createContext, useContext, useState, type ReactNode } from "react";
 
-import { RecognitionCategory } from "@/config/openapi_client";
-import { FormContextProps, FormValues } from "@/types";
+import {
+  RecognitionCategory,
+  RecognitionCreate,
+} from "@/config/openapi_client";
 
-// Default values
+type FormValues = Omit<RecognitionCreate, "sender_id">;
+
+interface FormContextProps {
+  values: FormValues;
+  input: string;
+  setInput: (input: string) => void;
+  setRecipientId: (id: number) => void;
+  setCategory: (category: RecognitionCategory) => void;
+  setMessage: (message: string) => void;
+  resetForm: () => void;
+  resetInput: () => void;
+}
+
 const defaultValues: FormValues = {
   recipient_id: 0,
   category: RecognitionCategory.TEAMWORK,
@@ -18,6 +32,7 @@ const RecognitionFormContext = createContext<FormContextProps | undefined>(
 
 export const FormProvider = ({ children }: { children: ReactNode }) => {
   const [values, setValues] = useState<FormValues>(defaultValues);
+  const [input, setInput] = useState<string>("");
 
   const setRecipientId = (id: number) =>
     setValues((prev) => ({ ...prev, recipient_id: id }));
@@ -29,15 +44,19 @@ export const FormProvider = ({ children }: { children: ReactNode }) => {
     setValues((prev) => ({ ...prev, message }));
 
   const resetForm = () => setValues(defaultValues);
+  const resetInput = () => setInput("");
 
   return (
     <RecognitionFormContext.Provider
       value={{
         values,
+        input,
+        setInput,
         setRecipientId,
         setCategory,
         setMessage,
         resetForm,
+        resetInput,
       }}
     >
       {children}
