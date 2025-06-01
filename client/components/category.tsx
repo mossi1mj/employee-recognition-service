@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Button } from "@heroui/button";
 import { useTheme } from "next-themes";
@@ -14,6 +14,12 @@ export const Category: React.FC = () => {
 
   const { values, setCategory } = useRecognitionForm();
   const selectedCategory = values.category;
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
 
   return (
     <div className="flex flex-wrap justify-center gap-2 mt-8">
