@@ -17,8 +17,6 @@ import { useTheme } from "next-themes";
 import { StaticImageData } from "next/image";
 import { Category } from "./category";
 
-
-
 const FormSkeleton: React.FC = () => (
   <Card>
     <CardHeader>

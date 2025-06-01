@@ -4,81 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Button } from "@heroui/button";
 
-import AboveBeyond from "../public/icons/AA_Above and beyond.svg";
-import ThankYou from "../public/icons/AA_Thank you.svg";
-import Awesome from "../public/icons/AA_Youre awesome.svg";
-import Teamwork from "../public/icons/AA_Teamwork.svg";
-import Better from "../public/icons/AA_You make us better.svg";
-import Focus from "../public/icons/AA_You did it.svg";
-
-import { categories, Categories } from "@/types";
-
-export const staticCategories: Categories[] = [
-  {
-    name: categories.GOING_ABOVE_AND_BEYOND,
-    icon: ThankYou,
-    displayName: "Thank you",
-    headline: [{ text: "Sending thanks for great work.", bold: false }],
-    shortDescription:
-      "Thanks for the great attitude. Here comes the gratitude.",
-    longDescription:
-      "Palms together, people. Your teammate is sending a big thanks your way.",
-  },
-  {
-    name: categories.INNOVATIVE_THINKING,
-    icon: AboveBeyond,
-    displayName: "Above and beyond",
-    headline: [
-      { text: "Recognizing exceptional effort and results.", bold: false },
-    ],
-    shortDescription: "Compliments to the chef.",
-    longDescription:
-      "They say the cream rises, and so do you - thanks for going above and beyond.",
-  },
-  {
-    name: categories.TEAMWORK_AND_COLLAB,
-    icon: Teamwork,
-    displayName: "Teamwork",
-    headline: [{ text: "Celebrating excellent collaboration.", bold: false }],
-    shortDescription: "Pound it - you make teamwork look easy.",
-    longDescription:
-      "You're a great teammate, and your coworkers want you to know it. Keep up the amazing collab skills.",
-  },
-  {
-    name: categories.PROBLEM_SOLVING,
-    icon: Awesome,
-    displayName: "You're awesome",
-    headline: [
-      { text: "Appreciating your awesome contributions.", bold: false },
-    ],
-    shortDescription:
-      "Like a secret admirer of your work, only not a secret at all.",
-    longDescription:
-      "You're amazing, and your teammates want you to know they love what you do. Great job!",
-  },
-  {
-    name: categories.CUSTOMER_FOCUS,
-    icon: Better,
-    displayName: "You make us better",
-    headline: [
-      { text: "Recognizing your positive impact on the team.", bold: false },
-    ],
-    shortDescription: "Sparky says, these are spirit fingers.",
-    longDescription:
-      "You bring the Ally spirit and make us better with what you do and how you do it.",
-  },
-  {
-    name: categories.EFFICIENCY_AND_PRODUCTVITY,
-    icon: Focus,
-    displayName: "Focused in",
-    headline: [
-      { text: "Acknowledging your focus and determination.", bold: false },
-    ],
-    shortDescription: "Pencils down and hands up - you got it done.",
-    longDescription:
-      "You keep your eye on the prize. Way to stay relentless and locked in on what matters most.",
-  },
-];
+import { recognitionCategoryList } from "@/config/category_selector";
 
 interface CategoryProps {
   onCategorySelect?: (category: string) => void;
@@ -100,21 +26,21 @@ export const Category: React.FC<CategoryProps> = ({
 
   return (
     <div className="flex flex-wrap justify-center gap-2 mt-8">
-      {staticCategories.map((category) => (
+      {recognitionCategoryList.map((category) => (
         <Button
-          key={category.name}
+          key={category.key}
           color={
-            selectedCategory === category.name
+            selectedCategory === category.label
               ? isDark
                 ? "secondary"
                 : "primary"
               : "default"
           }
-          variant={selectedCategory === category.name ? "flat" : "light"}
-          onPress={() => handleCategorySelect(category.name)}
+          variant={selectedCategory === category.label ? "flat" : "light"}
+          onPress={() => handleCategorySelect(category.label)}
           className={`p-2 transition-transform hover:scale-105 w-46 h-32 flex-[0_0_calc(33.333%-0.5rem)]
             ${
-              selectedCategory === category.name
+              selectedCategory === category.label
                 ? isDark
                   ? "border-2 border-secondary"
                   : "border-2 border-primary"
@@ -123,13 +49,13 @@ export const Category: React.FC<CategoryProps> = ({
         >
           <div className="flex flex-col items-center justify-center h-full mt-1">
             <Image
-              alt={category.displayName}
+              alt={category.label}
               height={75}
               src={category.icon}
               width={75}
             />
             <span className="text-body-sm font-semibold mt-2 text-center hidden sm:block">
-              {category.displayName}
+              {category.label}
             </span>
           </div>
         </Button>
