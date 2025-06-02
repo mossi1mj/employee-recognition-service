@@ -20,6 +20,7 @@ import Link from "next/link";
 import { useUserContext } from "@/context/UserContext";
 import { useUserRecognitions } from "@/hooks/useUserRecognitions";
 import { RecognitionResponse, RecognitionType } from "@/config/openapi_client";
+import { formatter } from "@/config/date";
 
 
 export const RecognitionCard = ({
@@ -37,7 +38,7 @@ export const RecognitionCard = ({
         <div>
           <p className="text-body-md">{recognition.headline}</p>
           <p className="text-form-label text-gray-600">
-            {recognition.created_at}
+            {formatter.format(new Date(recognition?.created_at))}
           </p>
         </div>
       </div>

@@ -14,6 +14,7 @@ import {
 import RecognitionModal from "./modal";
 
 import { useRecognitions } from "@/hooks/useRecognitions";
+import { formatter } from "@/config/date";
 
 const FeedSkeleton: React.FC = () => (
   <Card className="mb-2">
@@ -124,7 +125,7 @@ export const Feed: React.FC = () => {
                           <div>
                             <p className={"text-body-md"}>{item.headline}</p>
                             <p className="text-form-label text-gray-600">
-                              {item.created_at}
+                              {formatter.format(new Date(item?.created_at))}
                             </p>
                           </div>
                         </div>
