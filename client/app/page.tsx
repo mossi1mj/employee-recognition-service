@@ -5,6 +5,7 @@ import { MessageSquareShare } from "lucide-react";
 
 import { Feed } from "@/components/feed";
 import { Form } from "@/components/form";
+import { Recent } from "@/components/recent";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
 
         <div className="lg:col-span-1 space-y-6">
           <Feed />
+          <Recent />
         </div>
 
         <Button

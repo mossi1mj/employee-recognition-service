@@ -146,7 +146,7 @@ export const Otplogin: React.FC = () => {
         const recognitions =
           await RecognitionService.getUserRecognitionsRecognitionUserUserIdGet(
             user.id,
-            5
+            5,
           );
 
         setRecognitions(recognitions);

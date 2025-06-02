@@ -41,9 +41,9 @@ const RecognitionModal: React.FC<RecognitionModalProps> = ({
   return (
     <Modal
       isOpen={isOpen}
-      onOpenChange={onOpenChange}
-      size="5xl"
       scrollBehavior="inside"
+      size="5xl"
+      onOpenChange={onOpenChange}
     >
       <ModalContent>
         {(onClose) => (
@@ -52,7 +52,9 @@ const RecognitionModal: React.FC<RecognitionModalProps> = ({
               {page
                 ? "Talk of the Town"
                 : `${
-                    type === "given" ? "Recognition Given" : "Recognition Received"
+                    type === "given"
+                      ? "Recognition Given"
+                      : "Recognition Received"
                   } by
       ${name}`}
             </ModalHeader>
@@ -64,8 +66,8 @@ const RecognitionModal: React.FC<RecognitionModalProps> = ({
                   ) : error ? (
                     <p>Error: {error.message}</p>
                   ) : (
-                    recognitionData.map((recognition, index) => (
-                      <Card className="w-full mb-1" key={recognition.id}>
+                    recognitionData.map((recognition) => (
+                      <Card key={recognition.id} className="w-full mb-1">
                         <CardHeader className="flex justify-between items-center">
                           <div className="flex items-center gap-3 flex-grow">
                             <AvatarGroup
@@ -102,4 +104,5 @@ const RecognitionModal: React.FC<RecognitionModalProps> = ({
     </Modal>
   );
 };
+
 export default RecognitionModal;
