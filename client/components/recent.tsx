@@ -22,11 +22,15 @@ import { useRouter } from "next/navigation";
 import { useUserContext } from "@/context/UserContext";
 import { useUserRecognitions } from "@/hooks/useUserRecognitions";
 import { recognitionCategoryMeta } from "@/config/category_selector";
+import { RecognitionType } from "@/config/openapi_client";
 
 export const Recent: React.FC = () => {
   const router = useRouter();
   const { user, recognitions } = useUserContext();
-  const { isLoading } = useUserRecognitions(user?.id || null);
+  const { isLoading } = useUserRecognitions(
+    user?.id || null,
+    RecognitionType.ALL,
+  );
 
   return (
     <Card>
