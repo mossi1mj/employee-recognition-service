@@ -13,13 +13,41 @@ A modern, full-stack employee recognition platform where teammates can celebrate
 
 - [Overview](#overview)
 - [Features](#features)
+  - [Users](#-users)
+  - [Recognition System](#-recognition-system)
+  - [Team Page](#-team-page)
+  - [Auth](#-auth)
 - [Tech Stack](#tech-stack)
+  - [Frontend (Next.js)](#-frontend-nextjs)
+  - [Backend (FastAPI)](#-backend-fastapi)
+  - [Database](#-database)
+  - [Testing](#-testing)
 - [Project Structure](#project-structure)
-- [Setup Instructions](#getting-started)
-- [API Overview](#api-overview)
-- [WebSocket Events](#websocket)
-- [Screenshots](#screenshots)
+- [Environment Setup](#environment-setup)
+  - [Frontend `.env.local`](#-frontend-envlocal)
+  - [Backend `.env`](#-backend-env)
+- [Backend API Overview](#backend-api-overview)
+  - [User Routes](#user-routes)
+  - [Recognition Routes](#recognition-routes)
+  - [WebSocket Endpoint](#websocket-endpoint)
+- [Installation Instructions](#installation-instructions)
+  - [Prerequisites](#prerequisites)
+  - [Clone the repository](#clone-the-repository)
+  - [Setup Backend (FastAPI)](#setup-backend-fastapi)
+  - [Setup Frontend (Next.js)](#setup-frontend-nextjs)
+- [API Documentation](#api-documentation)
+- [Project Features](#project-features)
+  - [Authentication](#-authentication)
+  - [Recognition System](#-recognition-system-1)
+  - [User Directory](#-user-directory)
+  - [Filtering & Sorting](#-filtering--sorting)
+  - [Backend (FastAPI + PostgreSQL)](#-backend-fastapi--postgresql)
+  - [Validation & Error Handling](#-validation--error-handling)
+  - [Polished UI](#-polished-ui)
+- [Roadmap / Future Work](#roadmap--future-work)
+- [Credits / Acknowledgments](#credits--acknowledgments)
 - [License](#license)
+
 
 ## Overview
 
@@ -70,6 +98,8 @@ This is a simulated employee recognition platform that mimics how modern organiz
 - Minimal setup with auto reload & dev servers
 
 ## Project Structure
+
+```bash
 employee-recognition-service/
 ├── client/                      # Next.js frontend
 │   ├── app/                    # App router (pages, layouts)
@@ -95,6 +125,7 @@ employee-recognition-service/
 │   ├── .env                    # Backend environment variables (PostgreSQL)
 │   ├── requirements.txt        # Python dependencies
 │   └── venv/                   # Virtual environment (should be in .gitignore)
+```
 
 ## Environment Setup
 
