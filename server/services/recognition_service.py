@@ -1,5 +1,6 @@
 import json
 from fastapi import Query
+from services.moderation import check_message_moderation
 from services.ws_manager import manager
 from typing import Optional
 from services.utils import recognitions_to_response
@@ -18,6 +19,8 @@ async def broadcast_new_recognition(recognition: RecognitionResponse, connection
             connections.remove(ws)
 
 async def create_recognition(recognition_data: RecognitionCreate) -> RecognitionResponse:
+    await check_message_moderation(recognition_data.message)
+    
     sender = await fetch_user_by_id(recognition_data.sender_id)
     recipient = await fetch_user_by_id(recognition_data.recipient_id)
 

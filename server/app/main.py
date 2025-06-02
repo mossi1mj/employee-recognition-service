@@ -1,8 +1,12 @@
+import os
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routes.recognition_routes import router as recognition_router
 from routes.user_routes import router as user_router
 from routes.ws import router as ws_router
+
+load_dotenv()
 
 app = FastAPI()
 

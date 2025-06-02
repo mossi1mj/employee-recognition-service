@@ -65,12 +65,26 @@ export const useSubmitRecognition = () => {
         color: "success",
       });
     } catch (err: any) {
-      setError("Something went wrong.");
+      let message = "Something went wrong.";
+      let title = "Policy Violation Detected";
+
+      if (err?.body?.detail && err?.status === 400) {
+        title = `Policy Violation`;
+        message = `${err.body.detail}`;
+      } else if (err?.message) {
+        message = err.message;
+      }
+
+      console.log("Error submitting recognition:", err);
+      console.log("Error status:", err?.status);
+      console.log("Error response data:", err?.body);
+
+      setError(message);
       addToast({
-        title: "Error",
-        description: err.message || "Failed to send recognition.",
-        color: "danger",
+        title,
+        description: message,
       });
+
     } finally {
       setLoading(false);
     }
