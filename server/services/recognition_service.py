@@ -1,4 +1,6 @@
+import json
 from fastapi import Query
+from services.ws_manager import manager
 from typing import Optional
 from services.utils import recognitions_to_response
 from sqlalchemy.future import select
@@ -7,6 +9,13 @@ from models.recognition import Recognition, RecognitionCreate, RecognitionRespon
 from database.models import RecognitionDB
 from database.database import SessionLocal
 from services.user_service import fetch_user_by_id
+
+async def broadcast_new_recognition(recognition: RecognitionResponse, connections):
+    for ws in connections:
+        try:
+            await ws.send_text(json.dumps(recognition.dict()))
+        except Exception:
+            connections.remove(ws)
 
 async def create_recognition(recognition_data: RecognitionCreate) -> RecognitionResponse:
     sender = await fetch_user_by_id(recognition_data.sender_id)
@@ -32,7 +41,7 @@ async def create_recognition(recognition_data: RecognitionCreate) -> Recognition
         await session.commit()
         await session.refresh(db_recognition)
 
-    return RecognitionResponse(
+    response = RecognitionResponse(
         id=str(db_recognition.id),
         sender=sender,
         recipient=recipient,
@@ -41,6 +50,9 @@ async def create_recognition(recognition_data: RecognitionCreate) -> Recognition
         headline=recognition.headline,
         created_at=db_recognition.created_at
     )
+    await manager.broadcast(json.dumps(response.dict(), default=str))
+
+    return response
 
 async def get_all_recognitions(
     sender_id: Optional[int] = None,

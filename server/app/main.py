@@ -2,11 +2,13 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routes.recognition_routes import router as recognition_router
 from routes.user_routes import router as user_router
+from routes.ws import router as ws_router
 
 app = FastAPI()
 
 app.include_router(recognition_router)
 app.include_router(user_router)
+app.include_router(ws_router)
 
 app.add_middleware(
     CORSMiddleware,
