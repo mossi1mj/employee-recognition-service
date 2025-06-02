@@ -13,13 +13,12 @@ import {
   AvatarGroup,
   Avatar,
 } from "@heroui/react";
-import { ApplauseResponse } from "@/config/openapi_client";
+import { RecognitionResponse } from "@/config/openapi_client";
 
-
-interface ApplauseModalProps {
+interface RecognitionModalProps {
   isOpen: boolean;
   onClose: () => void;
-  applauseData: ApplauseResponse[];
+  recognitionData: RecognitionResponse[];
   isLoading: boolean;
   error: Error | null;
   type?: "given" | "received";
@@ -27,10 +26,10 @@ interface ApplauseModalProps {
   name?: string | null;
   page: boolean;
 }
-const ApplauseModal: React.FC<ApplauseModalProps> = ({
+const RecognitionModal: React.FC<RecognitionModalProps> = ({
   isOpen,
   onClose,
-  applauseData,
+  recognitionData,
   isLoading,
   error,
   type,
@@ -42,9 +41,9 @@ const ApplauseModal: React.FC<ApplauseModalProps> = ({
   return (
     <Modal
       isOpen={isOpen}
-      onOpenChange={onOpenChange}
-      size="5xl"
       scrollBehavior="inside"
+      size="5xl"
+      onOpenChange={onOpenChange}
     >
       <ModalContent>
         {(onClose) => (
@@ -53,7 +52,9 @@ const ApplauseModal: React.FC<ApplauseModalProps> = ({
               {page
                 ? "Talk of the Town"
                 : `${
-                    type === "given" ? "Applause Given" : "Applause Received"
+                    type === "given"
+                      ? "Recognition Given"
+                      : "Recognition Received"
                   } by
       ${name}`}
             </ModalHeader>
@@ -61,43 +62,30 @@ const ApplauseModal: React.FC<ApplauseModalProps> = ({
               <div className="w-full flex justify-center">
                 <div className="w-[90%]">
                   {isLoading ? (
-                    <Spinner label="Loading applause data..." />
+                    <Spinner label="Loading recognition data..." />
                   ) : error ? (
                     <p>Error: {error.message}</p>
                   ) : (
-                    applauseData.map((applause, index) => (
-                      //   <ApplauseCard
-                      //     key={index}
-                      //     applause={applause}
-                      //     message={page ? false : true}
-                      //   />
-                      <Card className="w-full mb-1" key={applause.id}>
+                    recognitionData.map((recognition) => (
+                      <Card key={recognition.id} className="w-full mb-1">
                         <CardHeader className="flex justify-between items-center">
                           <div className="flex items-center gap-3 flex-grow">
                             <AvatarGroup
                               isBordered
-                              size={`${applause.message ? "md" : "sm"}`}
+                              size={`${recognition.message ? "md" : "sm"}`}
                             >
-                              <Avatar src={applause.sender.image || ""} />
-                              <Avatar src={applause.recipient.image || ""} />
+                              <Avatar src={recognition.sender.image || ""} />
+                              <Avatar src={recognition.recipient.image || ""} />
                             </AvatarGroup>
                             <div>
-                              <p className={"text-body-md"}>{applause.headline}</p>
+                              <p className={"text-body-md"}>
+                                {recognition.headline}
+                              </p>
                               <p className="text-form-label text-gray-600">
-                                {applause.created_at}
+                                {recognition.created_at}
                               </p>
                             </div>
                           </div>
-                          {/* {categoryInfo && (
-                          <div className="flex-shrink-0 ml-2">
-                            <Image
-                              src={categoryInfo.icon}
-                              alt={categoryInfo.displayName}
-                              width={30}
-                              height={30}
-                            />
-                          </div>
-                        )} */}
                         </CardHeader>
                       </Card>
                     ))
@@ -116,4 +104,5 @@ const ApplauseModal: React.FC<ApplauseModalProps> = ({
     </Modal>
   );
 };
-export default ApplauseModal;
+
+export default RecognitionModal;

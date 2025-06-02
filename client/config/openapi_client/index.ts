@@ -7,13 +7,14 @@ export { CancelablePromise, CancelError } from './core/CancelablePromise';
 export { OpenAPI } from './core/OpenAPI';
 export type { OpenAPIConfig } from './core/OpenAPI';
 
-export { ApplauseCategory } from './models/ApplauseCategory';
-export type { ApplauseCreate } from './models/ApplauseCreate';
-export type { ApplauseResponse } from './models/ApplauseResponse';
 export type { CompanyInfo } from './models/CompanyInfo';
 export type { HTTPValidationError } from './models/HTTPValidationError';
+export { RecognitionCategory } from './models/RecognitionCategory';
+export type { RecognitionCreate } from './models/RecognitionCreate';
+export type { RecognitionResponse } from './models/RecognitionResponse';
+export { RecognitionType } from './models/RecognitionType';
 export type { User } from './models/User';
 export type { ValidationError } from './models/ValidationError';
 
-export { ApplauseService } from './services/ApplauseService';
+export { RecognitionService } from './services/RecognitionService';
 export { UsersService } from './services/UsersService';

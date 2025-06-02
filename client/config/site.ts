@@ -1,17 +1,17 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Employee Applause",
+  name: "Employee Recognition",
   description:
-    "The Employee Applause app is a platform for recognizing and celebrating employee achievements, fostering a positive workplace culture.",
+    "The Employee Recognition app is a platform for recognizing and celebrating employee achievements, fostering a positive workplace culture.",
   navItems: [
     {
       label: "Home",
       href: "/",
     },
     {
-      label: "My Applause",
-      href: "/my-applause",
+      label: "Recognitions",
+      href: "/recognitions",
     },
     {
       label: "Team",
@@ -20,8 +20,8 @@ export const siteConfig = {
   ],
   navMenuItems: [
     {
-      label: "My Applause",
-      href: "/my-applause",
+      label: "Recognitions",
+      href: "/recognitions",
     },
     {
       label: "Team",

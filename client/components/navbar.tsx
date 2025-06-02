@@ -16,14 +16,26 @@ import clsx from "clsx";
 import { Switch } from "@heroui/switch";
 import { useTheme } from "next-themes";
 import { useIsSSR } from "@react-aria/ssr";
-import { Moon, Sun } from "lucide-react";
+import { Github, Moon, Sun } from "lucide-react";
 
 import { Logo } from "@/components/icons";
 import { siteConfig } from "@/config/site";
+import {
+  Avatar,
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+  Tooltip,
+} from "@heroui/react";
+import { useUserContext } from "@/context/UserContext";
 
 export const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const isSSR = useIsSSR();
+
+  const { user } = useUserContext();
 
   const onChange = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
@@ -60,6 +72,17 @@ export const Navbar = () => {
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
+        <Tooltip placement="bottom" content="GitHub Repository">
+          <NextLink
+            href="https://github.com/mossi1mj/employee-recognition-service"
+            target="_blank"
+            passHref
+          >
+            <Button isIconOnly variant="light" aria-label="GitHub">
+              <Github size={20} />
+            </Button>
+          </NextLink>
+        </Tooltip>
         <Switch
           endContent={<Moon size={16} />}
           isSelected={theme === "light" || isSSR}
@@ -67,6 +90,39 @@ export const Navbar = () => {
           startContent={<Sun size={16} />}
           onValueChange={onChange}
         />
+        <Dropdown placement="bottom-end">
+          <DropdownTrigger>
+            {user ? (
+              <Avatar
+                isBordered
+                as="button"
+                className="transition-transform"
+                color="default"
+                name={user?.firstName || "User"}
+                size="sm"
+                src={user?.image}
+              />
+            ) : (
+              <Avatar
+                isBordered
+                as="button"
+                className="transition-transform"
+                color="default"
+                name="User"
+                size="sm"
+                src="https://avatars.githubusercontent.com/u/1?v=4"
+              />
+            )}
+          </DropdownTrigger>
+          <DropdownMenu aria-label="Profile Actions" variant="flat">
+            <DropdownItem key="profile" className="h-14 gap-2">
+              <p className="font-semibold">Signed in as</p>
+              {user && (
+                <p className="font-semibold">{`${user?.firstName} ${user?.lastName}`}</p>
+              )}
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">

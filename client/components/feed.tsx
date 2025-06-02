@@ -10,8 +10,11 @@ import {
   CardHeader,
   Skeleton,
 } from "@heroui/react";
-import { useApplauses } from "@/hooks/useApplauses";
-import ApplauseModal from "./modal";
+
+import RecognitionModal from "./modal";
+
+import { useRecognitions } from "@/hooks/useRecognitions";
+import { formatter } from "@/config/date";
 
 const FeedSkeleton: React.FC = () => (
   <Card className="mb-2">
@@ -28,7 +31,7 @@ const FeedSkeleton: React.FC = () => (
 );
 
 export const Feed: React.FC = () => {
-  const { data, loading, error } = useApplauses({
+  const { recognitions, isLoading, error } = useRecognitions({
     senderId: null,
     recipientId: null,
   });
@@ -64,7 +67,6 @@ export const Feed: React.FC = () => {
             </div>
             <Button
               variant="ghost"
-              radius="full"
               size="sm"
               color="primary"
               onPress={openModal}
@@ -87,7 +89,7 @@ export const Feed: React.FC = () => {
                 </CardBody>
               </Card>
             </motion.div>
-          ) : loading ? (
+          ) : isLoading ? (
             <div className="space-y-2">
               {[...Array(5)].map((_, index) => (
                 <FeedSkeleton key={index} />
@@ -96,7 +98,7 @@ export const Feed: React.FC = () => {
           ) : (
             <div className="space-y-2">
               <AnimatePresence initial={false}>
-                {data?.slice(0, 5).map((item, _) => (
+                {recognitions?.slice(0, 5).map((item, _) => (
                   <motion.div
                     key={item.created_at}
                     initial={{ opacity: 0, y: -20, height: 0 }}
@@ -109,7 +111,7 @@ export const Feed: React.FC = () => {
                       opacity: { duration: 0.2 },
                     }}
                   >
-                    {/* <ApplauseCard applause={item} message={false} /> */}
+                    {/* <RecognitionCard recognition={item} message={false} /> */}
                     <Card className="w-full mb-1">
                       <CardHeader className="flex justify-between items-center">
                         <div className="flex items-center gap-3 flex-grow">
@@ -123,20 +125,10 @@ export const Feed: React.FC = () => {
                           <div>
                             <p className={"text-body-md"}>{item.headline}</p>
                             <p className="text-form-label text-gray-600">
-                              {item.created_at}
+                              {formatter.format(new Date(item?.created_at))}
                             </p>
                           </div>
                         </div>
-                        {/* {categoryInfo && (
-                          <div className="flex-shrink-0 ml-2">
-                            <Image
-                              src={categoryInfo.icon}
-                              alt={categoryInfo.displayName}
-                              width={30}
-                              height={30}
-                            />
-                          </div>
-                        )} */}
                       </CardHeader>
                     </Card>
                   </motion.div>
@@ -146,13 +138,13 @@ export const Feed: React.FC = () => {
           )}
         </CardBody>
       </Card>
-      <ApplauseModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        applauseData={data || []}
-        isLoading={loading}
-        error={error}
+      <RecognitionModal
         page
+        error={error}
+        isLoading={isLoading}
+        isOpen={isModalOpen}
+        recognitionData={recognitions || []}
+        onClose={() => setIsModalOpen(false)}
       />
     </>
   );

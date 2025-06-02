@@ -2,7 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-export enum ApplauseCategory {
+export enum RecognitionCategory {
     TEAMWORK = 'teamwork',
     INNOVATION = 'innovation',
     LEADERSHIP = 'leadership',
