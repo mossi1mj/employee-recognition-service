@@ -15,7 +15,6 @@ import RecognitionModal from "./modal";
 
 import { useRecognitions } from "@/hooks/useRecognitions";
 
-
 const FeedSkeleton: React.FC = () => (
   <Card className="mb-2">
     <CardBody className="py-2 px-4">
