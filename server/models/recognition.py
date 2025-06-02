@@ -6,6 +6,11 @@ from datetime import datetime
 
 from models.user import User
 
+class RecognitionType(str, Enum):
+    SENT = "sent"
+    RECEIVED = "received"
+    ALL = "all"
+
 class RecognitionCategory(str, Enum):
     teamwork = "teamwork"
     innovation = "innovation"

@@ -3,7 +3,7 @@ from typing import Optional
 from services.utils import recognitions_to_response
 from sqlalchemy.future import select
 from sqlalchemy import select, desc
-from models.recognition import Recognition, RecognitionCreate, RecognitionResponse 
+from models.recognition import Recognition, RecognitionCreate, RecognitionResponse, RecognitionType 
 from database.models import RecognitionDB
 from database.database import SessionLocal
 from services.user_service import fetch_user_by_id
@@ -66,12 +66,26 @@ async def get_all_recognitions(
 
     return await recognitions_to_response(db_recognitions)
 
-async def get_user_recognitions(user_id: int, limit: Optional[int], skip: int):
+async def get_user_recognitions(
+    user_id: int,
+    type: RecognitionType = RecognitionType.ALL,
+    limit: Optional[int] = None,
+    skip: int = 0
+):
     async with SessionLocal() as session:
-        query = select(RecognitionDB).where(
-            (RecognitionDB.sender_id == user_id) |
-            (RecognitionDB.recipient_id == user_id)
-        ).order_by(desc(RecognitionDB.created_at))
+        query = select(RecognitionDB)
+
+        if type == RecognitionType.SENT:
+            query = query.where(RecognitionDB.sender_id == user_id)
+        elif type == RecognitionType.RECEIVED:
+            query = query.where(RecognitionDB.recipient_id == user_id)
+        else:
+            query = query.where(
+                (RecognitionDB.sender_id == user_id) |
+                (RecognitionDB.recipient_id == user_id)
+            )
+
+        query = query.order_by(desc(RecognitionDB.created_at))
 
         if limit != 0:
             query = query.offset(skip)
@@ -79,6 +93,4 @@ async def get_user_recognitions(user_id: int, limit: Optional[int], skip: int):
                 query = query.limit(limit)
 
         result = await session.execute(query)
-        db_recognitions = result.scalars().all()
-    
-    return await recognitions_to_response(db_recognitions)
+        return await recognitions_to_response(result.scalars().all())

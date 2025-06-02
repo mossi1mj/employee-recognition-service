@@ -12,6 +12,7 @@ export type { HTTPValidationError } from './models/HTTPValidationError';
 export { RecognitionCategory } from './models/RecognitionCategory';
 export type { RecognitionCreate } from './models/RecognitionCreate';
 export type { RecognitionResponse } from './models/RecognitionResponse';
+export { RecognitionType } from './models/RecognitionType';
 export type { User } from './models/User';
 export type { ValidationError } from './models/ValidationError';
 

@@ -26,7 +26,11 @@ import React, { FormEvent, useEffect, useState, useTransition } from "react";
 import { countries } from "@/config/county_codes";
 import { useUserContext } from "@/context/UserContext";
 import { auth } from "@/firebase";
-import { RecognitionService, UsersService } from "@/config/openapi_client";
+import {
+  RecognitionService,
+  RecognitionType,
+  UsersService,
+} from "@/config/openapi_client";
 
 export const Otplogin: React.FC = () => {
   const { isAuthenticated, setIsAuthenticated, setUser, setRecognitions } =
@@ -146,6 +150,7 @@ export const Otplogin: React.FC = () => {
         const recognitions =
           await RecognitionService.getUserRecognitionsRecognitionUserUserIdGet(
             user.id,
+            RecognitionType.ALL,
             5,
           );
 

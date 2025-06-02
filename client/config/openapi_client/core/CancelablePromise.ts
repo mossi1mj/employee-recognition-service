@@ -1,9 +1,6 @@
 /* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
-
-import { addToast } from "@heroui/react";
-
 /* eslint-disable */
 export class CancelError extends Error {
 
@@ -120,11 +117,7 @@ export class CancelablePromise<T> implements Promise<T> {
                     cancelHandler();
                 }
             } catch (error) {
-                addToast({
-                    title: "Cancellation Error",
-                    description: "An error occurred while cancelling the request.",
-                    color: "warning",
-                });
+                console.warn('Cancellation threw an error', error);
                 return;
             }
         }

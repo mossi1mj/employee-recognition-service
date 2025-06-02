@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Query
-from models.recognition import RecognitionCreate, RecognitionResponse
+from models.recognition import RecognitionCreate, RecognitionResponse, RecognitionType
 from services import recognition_service
 from typing import List, Optional
 
@@ -26,7 +26,8 @@ async def get_recognitions(
 @router.get("/user/{user_id}", response_model=List[RecognitionResponse])
 async def get_user_recognitions(
     user_id: int,
+    type: RecognitionType = RecognitionType.ALL,
     limit: Optional[int] = Query(None, ge=0),
     skip: int = Query(0, ge=0)
 ):
-    return await recognition_service.get_user_recognitions(user_id, limit, skip)
+    return await recognition_service.get_user_recognitions(user_id, type, limit, skip)

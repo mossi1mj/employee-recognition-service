@@ -4,6 +4,7 @@
 /* eslint-disable */
 import type { RecognitionCreate } from '../models/RecognitionCreate';
 import type { RecognitionResponse } from '../models/RecognitionResponse';
+import type { RecognitionType } from '../models/RecognitionType';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
@@ -59,6 +60,7 @@ export class RecognitionService {
     /**
      * Get User Recognitions
      * @param userId
+     * @param type
      * @param limit
      * @param skip
      * @returns RecognitionResponse Successful Response
@@ -66,6 +68,7 @@ export class RecognitionService {
      */
     public static getUserRecognitionsRecognitionUserUserIdGet(
         userId: number,
+        type: RecognitionType.ALL,
         limit?: (number | null),
         skip?: number,
     ): CancelablePromise<Array<RecognitionResponse>> {
@@ -76,6 +79,7 @@ export class RecognitionService {
                 'user_id': userId,
             },
             query: {
+                'type': type,
                 'limit': limit,
                 'skip': skip,
             },
