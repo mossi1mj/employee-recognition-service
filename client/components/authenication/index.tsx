@@ -5,7 +5,6 @@ import {
   Alert,
   Button,
   Divider,
-  Input,
   Modal,
   ModalBody,
   ModalContent,
@@ -15,19 +14,29 @@ import {
   Tab,
   Tabs,
 } from "@heroui/react";
-import { Mail } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import { onAuthStateChanged } from "firebase/auth";
 
 import { AppleIcon, FacebookIcon, GithubIcon, GoogleIcon } from "../icons";
 
 import PhoneAuthentication from "./phone";
+import EmailAuthentication from "./email";
 
 import { usePhoneAuth } from "@/authentication/usePhoneAuth";
 import { useUserContext } from "@/context/UserContext";
 import { useAuthContext } from "@/context/AuthContext";
-import EmailAuthentication from "./email";
 import { useEmailAuth } from "@/authentication/useEmailAuth";
+import {
+  AuthProviderName,
+  signInWithProvider,
+} from "@/authentication/useSocialAuth";
+import { auth } from "@/authentication/firebase";
+import {
+  RecognitionService,
+  RecognitionType,
+  UsersService,
+} from "@/config/openapi_client";
 
 declare global {
   interface Window {
@@ -37,11 +46,45 @@ declare global {
 
 const Authenticate: React.FC = () => {
   const { theme } = useTheme();
-  const { isAuthenticated } = useUserContext();
+  const { isAuthenticated, setIsAuthenticated, setUser, setRecognitions } =
+    useUserContext();
   const { success, error, reset, phoneNumber, email } = useAuthContext();
   const { requestOtp, isPending } = usePhoneAuth();
   const { isPending: isLoading, handleSendLink } = useEmailAuth();
   const [selectedTab, setSelectedTab] = useState("phone");
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      if (firebaseUser) {
+        try {
+          const userId = Math.floor(Math.random() * 10) + 1;
+          const user = await UsersService.getUserByIdUsersUserIdGet(userId);
+
+          setUser(user);
+          setIsAuthenticated(true);
+
+          const recognitions =
+            await RecognitionService.getUserRecognitionsRecognitionUserUserIdGet(
+              user.id,
+              RecognitionType.ALL,
+              5
+            );
+
+          setRecognitions(recognitions);
+
+          addToast({ title: "Signed in successfully!" });
+        } catch (err) {
+          addToast({
+            title: "Sign In Failed",
+            description: (err as Error).message,
+          });
+          console.error("Failed to initialize user after sign-in", err);
+        }
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   return (
     <div>
@@ -111,33 +154,38 @@ const Authenticate: React.FC = () => {
             <div className="flex justify-center items-center gap-10 mb-4">
               <Button
                 isIconOnly
+                disabled={reset > 0}
                 startContent={<GoogleIcon />}
                 variant="bordered"
+                onPress={() => signInWithProvider(AuthProviderName.GOOGLE)}
               />
 
               <Button
                 isIconOnly
+                disabled={reset > 0}
                 startContent={<FacebookIcon />}
                 variant="bordered"
-                disabled={reset > 0}
+                onPress={() => signInWithProvider(AuthProviderName.FACEBOOK)}
               />
 
               <Button
                 isIconOnly
+                disabled={reset > 0}
                 startContent={
                   <AppleIcon
                     className={`${theme === "dark" ? "text-white" : "text-black"}`}
                   />
                 }
                 variant="bordered"
-                disabled={reset > 0}
+                onPress={() => signInWithProvider(AuthProviderName.APPLE)}
               />
 
               <Button
                 isIconOnly
+                disabled={reset > 0}
                 startContent={<GithubIcon />}
                 variant="bordered"
-                disabled={reset > 0}
+                onPress={() => signInWithProvider(AuthProviderName.GITHUB)}
               />
             </div>
           </ModalBody>

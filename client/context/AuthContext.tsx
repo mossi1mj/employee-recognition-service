@@ -1,6 +1,7 @@
 "use client";
 
-import { ConfirmationResult } from "firebase/auth";
+import { auth } from "@/authentication/firebase";
+import { ConfirmationResult, onAuthStateChanged } from "firebase/auth";
 import React, { createContext, useState, useEffect } from "react";
 
 interface AuthContextType {

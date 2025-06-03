@@ -1,8 +1,8 @@
-import { useEmailAuth } from "@/authentication/useEmailAuth";
-import { useAuthContext } from "@/context/AuthContext";
 import { Input } from "@heroui/input";
 import { Mail } from "lucide-react";
 import React from "react";
+
+import { useAuthContext } from "@/context/AuthContext";
 
 const EmailAuthentication: React.FC = () => {
   const { email, setEmail } = useAuthContext();
