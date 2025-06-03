@@ -10,6 +10,7 @@ import { ToastProvider } from "@heroui/toast";
 
 import { UserProvider } from "@/context/UserContext";
 import { FormProvider } from "@/context/FormContext";
+import { AuthProvider } from "@/context/AuthContext";
 
 export interface ProvidersProps {
   children: React.ReactNode;
@@ -31,10 +32,12 @@ export function Providers({ children, themeProps }: ProvidersProps) {
     <HeroUIProvider navigate={router.push}>
       <NextThemesProvider {...themeProps}>
         <UserProvider>
-          <FormProvider>
-            <ToastProvider />
-            {children}
-          </FormProvider>
+          <AuthProvider>
+            <FormProvider>
+              <ToastProvider />
+              {children}
+            </FormProvider>
+          </AuthProvider>
         </UserProvider>
       </NextThemesProvider>
     </HeroUIProvider>
