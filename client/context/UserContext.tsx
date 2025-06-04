@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState } from "react";
 
-import { RecognitionResponse, User } from "@/config/openapi_client";
+import { RecognitionResponse, User } from "@/openapi";
 
 interface UserContextProps {
   user: User | null;

@@ -1,9 +1,6 @@
 import useSWR from "swr";
 
-import {
-  RecognitionResponse,
-  RecognitionService,
-} from "@/config/openapi_client";
+import { RecognitionResponse, RecognitionService } from "@/openapi";
 import { UseRecognitionsOptions } from "@/types";
 
 const fetchRecognitions = async ({

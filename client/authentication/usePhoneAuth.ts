@@ -9,11 +9,7 @@ import {
 import { auth } from "./firebase";
 import { countries } from "@/config/county_codes";
 import { useAuthContext } from "@/context/AuthContext";
-import {
-  RecognitionService,
-  RecognitionType,
-  UsersService,
-} from "@/config/openapi_client";
+import { RecognitionService, RecognitionType, UsersService } from "@/openapi";
 import { useUserContext } from "@/context/UserContext";
 
 export const usePhoneAuth = () => {

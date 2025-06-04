@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { useConfetti } from "./useConfetti";
 
-import { RecognitionService } from "@/config/openapi_client";
+import { RecognitionService } from "@/openapi";
 import { useRecognitionForm } from "@/context/FormContext";
 import { useUserContext } from "@/context/UserContext";
 import { recognitionSchema } from "@/config/zod";

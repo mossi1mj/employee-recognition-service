@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --fix",
-    "generate-client": "openapi --input http://127.0.0.1:8000/openapi.json --output config/openapi_client --client fetch"
+    "generate-client": "openapi --input http://127.0.0.1:8000/openapi.json --output openapi --client fetch"
   },
   "dependencies": {
     "@heroui/button": "2.2.19",

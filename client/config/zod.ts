@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { RecognitionCategory } from "./openapi_client";
+import { RecognitionCategory } from "../openapi";
 
 export const recognitionSchema = z
   .object({

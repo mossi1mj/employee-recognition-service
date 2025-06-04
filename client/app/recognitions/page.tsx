@@ -19,9 +19,8 @@ import Link from "next/link";
 
 import { useUserContext } from "@/context/UserContext";
 import { useUserRecognitions } from "@/hooks/useUserRecognitions";
-import { RecognitionResponse, RecognitionType } from "@/config/openapi_client";
+import { RecognitionResponse, RecognitionType } from "@/openapi";
 import { formatter } from "@/config/date";
-
 
 export const RecognitionCard = ({
   recognition,

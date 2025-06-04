@@ -122,7 +122,6 @@ export const Feed: React.FC = () => {
                       opacity: { duration: 0.2 },
                     }}
                   >
-                    {/* <RecognitionCard recognition={item} message={false} /> */}
                     <Card className="w-full mb-1">
                       <CardHeader className="flex justify-between items-center">
                         <div className="flex items-center gap-3 flex-grow">
@@ -150,11 +149,11 @@ export const Feed: React.FC = () => {
         </CardBody>
       </Card>
       <RecognitionModal
-        page
+        homePage
+        data={recognitions || []}
         error={failed}
         isLoading={isLoading}
         isOpen={isModalOpen}
-        recognitionData={recognitions || []}
         onClose={() => setIsModalOpen(false)}
       />
     </>

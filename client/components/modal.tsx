@@ -13,28 +13,26 @@ import {
   AvatarGroup,
   Avatar,
 } from "@heroui/react";
-import { RecognitionResponse } from "@/config/openapi_client";
+import { RecognitionResponse, RecognitionType } from "@/openapi";
+import { formatter } from "@/config/date";
 
 interface RecognitionModalProps {
   isOpen: boolean;
   onClose: () => void;
-  recognitionData: RecognitionResponse[];
+  data: RecognitionResponse[];
   isLoading: boolean;
   error: Error | null;
-  type?: "given" | "received";
-  memberEmail?: string | null;
-  name?: string | null;
-  page: boolean;
+  type?: RecognitionType;
+  homePage: boolean;
 }
 const RecognitionModal: React.FC<RecognitionModalProps> = ({
   isOpen,
   onClose,
-  recognitionData,
+  data,
   isLoading,
   error,
   type,
-  name,
-  page,
+  homePage,
 }) => {
   const { onOpenChange } = useDisclosure({ isOpen, onClose });
 
@@ -49,11 +47,11 @@ const RecognitionModal: React.FC<RecognitionModalProps> = ({
         {(onClose) => (
           <>
             <ModalHeader className="flex flex-col gap-1">
-              {page
+              {homePage
                 ? "Talk of the Town"
                 : `${
-                    type === "given"
-                      ? "Recognition Given"
+                    type === RecognitionType.SENT
+                      ? "Recognition Sent"
                       : "Recognition Received"
                   } by
       ${name}`}
@@ -66,7 +64,7 @@ const RecognitionModal: React.FC<RecognitionModalProps> = ({
                   ) : error ? (
                     <p>Error: {error.message}</p>
                   ) : (
-                    recognitionData.map((recognition) => (
+                    data.map((recognition) => (
                       <Card key={recognition.id} className="w-full mb-1">
                         <CardHeader className="flex justify-between items-center">
                           <div className="flex items-center gap-3 flex-grow">
@@ -82,7 +80,9 @@ const RecognitionModal: React.FC<RecognitionModalProps> = ({
                                 {recognition.headline}
                               </p>
                               <p className="text-form-label text-gray-600">
-                                {recognition.created_at}
+                                {formatter.format(
+                                  new Date(recognition?.created_at),
+                                )}
                               </p>
                             </div>
                           </div>

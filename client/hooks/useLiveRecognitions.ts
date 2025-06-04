@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import { addToast } from "@heroui/react";
 
-import {
-  RecognitionService,
-  RecognitionResponse,
-} from "@/config/openapi_client";
+import { RecognitionService, RecognitionResponse } from "@/openapi";
 import { useWebSocket } from "@/hooks/useWebSocket";
 import { url } from "@/config/site";
 import { useUserContext } from "@/context/UserContext";

@@ -32,11 +32,7 @@ import {
   signInWithProvider,
 } from "@/authentication/useSocialAuth";
 import { auth } from "@/authentication/firebase";
-import {
-  RecognitionService,
-  RecognitionType,
-  UsersService,
-} from "@/config/openapi_client";
+import { RecognitionService, RecognitionType, UsersService } from "@/openapi";
 
 declare global {
   interface Window {

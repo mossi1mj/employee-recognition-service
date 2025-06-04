@@ -1,11 +1,12 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 
-import { RecognitionResponse } from "@/config/openapi_client";
+import { RecognitionResponse } from "@/openapi";
 import { addToast } from "@heroui/react";
 
 export const useWebSocket = (url: string) => {
   const [isConnected, setIsConnected] = useState<boolean>(false);
-  const [lastRecognition, setLastRecognition] = useState<RecognitionResponse | null>(null);
+  const [lastRecognition, setLastRecognition] =
+    useState<RecognitionResponse | null>(null);
   const socketRef = useRef<WebSocket | null>(null);
 
   const connect = useCallback(() => {
@@ -51,7 +52,7 @@ export const useWebSocket = (url: string) => {
         socketRef.current.send(JSON.stringify(recognition));
       }
     },
-    [isConnected],
+    [isConnected]
   );
 
   return { isConnected, lastRecognition, sendRecognition, disconnect };

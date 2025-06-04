@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-import { UsersService, User } from "@/config/openapi_client";
+import { UsersService, User } from "@/openapi";
 import { addToast } from "@heroui/react";
 
 export const useUserSearch = () => {

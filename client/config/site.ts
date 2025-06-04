@@ -1,4 +1,4 @@
-import { OpenAPI } from "./openapi_client";
+import { OpenAPI } from "../openapi";
 
 export type SiteConfig = typeof siteConfig;
 
