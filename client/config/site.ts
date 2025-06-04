@@ -1,3 +1,5 @@
+import { OpenAPI } from "./openapi_client";
+
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
@@ -36,3 +38,5 @@ export const siteConfig = {
     sponsor: "https://patreon.com/jrgarciadev",
   },
 };
+
+export const url = `${OpenAPI.BASE.replace(/^http/, "ws")}/ws/recognitions`;

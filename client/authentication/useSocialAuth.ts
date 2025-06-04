@@ -1,12 +1,13 @@
 import { addToast } from "@heroui/react";
 import {
-  getAuth,
   signInWithPopup,
   GoogleAuthProvider,
   FacebookAuthProvider,
   GithubAuthProvider,
   OAuthProvider,
 } from "firebase/auth";
+
+import { auth } from "./firebase";
 
 export enum AuthProviderName {
   GOOGLE = "google",
@@ -16,7 +17,6 @@ export enum AuthProviderName {
 }
 
 export const signInWithProvider = async (providerName: AuthProviderName) => {
-  const auth = getAuth();
   let provider;
 
   switch (providerName) {

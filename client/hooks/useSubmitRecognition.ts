@@ -6,7 +6,7 @@ import { RecognitionService } from "@/config/openapi_client";
 import { useRecognitionForm } from "@/context/FormContext";
 import { useUserContext } from "@/context/UserContext";
 import { recognitionSchema } from "@/config/zod";
-import { addToast, toast } from "@heroui/react";
+import { addToast } from "@heroui/react";
 
 export const useSubmitRecognition = () => {
   const { fireConfetti } = useConfetti();
@@ -75,16 +75,11 @@ export const useSubmitRecognition = () => {
         message = err.message;
       }
 
-      console.log("Error submitting recognition:", err);
-      console.log("Error status:", err?.status);
-      console.log("Error response data:", err?.body);
-
       setError(message);
       addToast({
         title,
         description: message,
       });
-
     } finally {
       setLoading(false);
     }

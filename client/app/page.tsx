@@ -22,13 +22,13 @@ export default function Home() {
 
         <Button
           as="a"
-          className="fixed bottom-4 left-4 z-50 rounded-full shadow-lg"
+          className="fixed bottom-4 left-4 z-50 shadow-lg"
           color="primary"
           href="mailto:mossjmyron@gmail.com.com?subject=Feedback for Employee Recognition Platform"
-          size="sm"
-          startContent={<MessageSquareShare size={18} />}
+          size="lg"
+          startContent={<MessageSquareShare size={24} />}
         >
-          Pilot Feedback
+          Feedback
         </Button>
       </div>
     </section>

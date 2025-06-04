@@ -1,15 +1,13 @@
 from fastapi import WebSocket, WebSocketDisconnect, APIRouter
+from services.ws_manager import manager
 
 router = APIRouter()
 
-active_connections: list[WebSocket] = []
-
 @router.websocket("/ws/recognitions")
 async def websocket_endpoint(websocket: WebSocket):
-    await websocket.accept()
-    active_connections.append(websocket)
+    await manager.connect(websocket)
     try:
         while True:
             await websocket.receive_text()
     except WebSocketDisconnect:
-        active_connections.remove(websocket)
+        manager.disconnect(websocket)

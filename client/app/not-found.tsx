@@ -15,10 +15,11 @@ export default function Custom404() {
           transition={{ duration: 0.5 }}
         >
           <h1 className="text-2xl font-bold mb-4">
-            Uh Oh, Something&apos;s wrong here...
+            Oops! Lost in the Digital Wilderness 🧭
           </h1>
           <p className="text-gray-500 dark:text-gray-400 text-sm mb-8">
-            Instead of clapping our hands, looks like we stomped our feet.
+            Looks like this page wandered off somewhere else. Don’t worry, we’ll
+            help you find your way back — the fun is just a click away!
           </p>
           <Button
             as="a"
