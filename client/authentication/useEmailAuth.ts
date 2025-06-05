@@ -9,7 +9,6 @@ import { addToast } from "@heroui/react";
 import { actionCodeSettings, auth } from "./firebase";
 
 import { useUserContext } from "@/context/UserContext";
-import { RecognitionService, RecognitionType, UsersService } from "@/openapi";
 import { useAuthContext } from "@/context/AuthContext";
 import { userSignIn } from "./userSignIn";
 
