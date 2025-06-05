@@ -48,7 +48,6 @@ A modern, full-stack employee recognition platform where teammates can celebrate
 - [Credits / Acknowledgments](#credits--acknowledgments)
 - [License](#license)
 
-
 ## Overview
 
 This is a simulated employee recognition platform that mimics how modern organizations use tools like Microsoft Viva or Lattice to celebrate team contributions.
@@ -61,40 +60,48 @@ This is a simulated employee recognition platform that mimics how modern organiz
 ## Features
 
 ### 🧑‍💼 Users
+
 - List all users from dummy API
 - Search and filter by attributes (e.g. role)
 - View user profile and recognitions
 
 ### 👏 Recognition System
+
 - Give real-time recognition via a beautiful Hero UI form
 - Feed of all recognitions with WebSocket-powered live updates
 - Filter recognitions by sender/receiver
 - Dashboard: view your 5 most recent recognitions (sent or received)
 
 ### 👥 Team Page
+
 - See your team based on shared job title
 - Track how many recognitions each team member has
 
 ### 🔐 Auth
+
 - Firebase OTP verification (email or phone)
 - Random user assignment to simulate signed-in company employee
 
 ## Tech Stack
 
 ### 🖥 Frontend (Next.js)
+
 - Tailwind CSS + Hero UI for modern UI/UX
 - React Context + Hooks for shared state
 - Firebase Auth (OTP flow)
 
 ### ⚙️ Backend (FastAPI)
+
 - REST API for users and recognitions
 - PostgreSQL with async support via SQLAlchemy or Tortoise
 - WebSockets for real-time updates
 
 ### 🗄 Database
+
 - PostgreSQL (recognitions stored here)
 
 ### 🧪 Testing
+
 - Minimal setup with auto reload & dev servers
 
 ## Project Structure
@@ -144,6 +151,7 @@ NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
 NEXT_PUBLIC_FIREBASE_APP_ID=your_firebase_app_id
 NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=your_measurement_id
 ```
+
 **Note:** This project uses Firebase OTP authentication to validate real users, but then randomly assigns a user from the dummy JSON API for demo purposes.
 
 ### Backend `.env`
@@ -155,10 +163,11 @@ DATABASE_USER=your_database_user
 DATABASE_PASSWORD=your_database_password
 DATABASE_HOST=localhost
 DATABASE_PORT=5432
-DATABASE_NAME=recognition_dev
+DATABASE_NAME=your_database_name
 
-DATABASE_URL=postgresql+asyncpg://your_database_user:your_database_password@localhost:5432/recognition_dev
+DATABASE_URL=postgresql+asyncpg://your_database_user:your_database_password@localhost:5432/your_database_name
 ```
+
 **Note:** This project uses PostgreSQL to store recognition data, with async SQLAlchemy and FastAPI integration.
 
 ## Backend API Overview
@@ -217,6 +226,7 @@ cd employee-recognition-service
 ```
 
 ### Setup Backend (FastAPI)
+
 ## In Terminal 1:
 
 1. Navigate to the server folder:
@@ -253,6 +263,7 @@ alembic upgrade head
 ```
 
 ### Setup Frontend (Next.js)
+
 ## In Terminal 2 (new terminal window/tab):
 
 1. Navigate to the client folder:
@@ -293,10 +304,12 @@ This provides a live and interactive documentation for all available routes, inc
 ## Project Features
 
 ### 🔐 Authentication
+
 - Firebase OTP (One-Time Password) phone authentication
 - Users verify with a real phone number but are assigned a random profile from the DummyJSON Users API for demo purposes
 
 ### 🌟 Recognition System
+
 - Authenticated users can send recognitions to coworkers
 - Each recognition includes:
   - A short message
@@ -304,25 +317,30 @@ This provides a live and interactive documentation for all available routes, inc
   - Timestamp
 
 ### 🧑‍🤝‍🧑 User Directory
+
 - Integrated with DummyJSON API to simulate an employee directory
 - Supports searching and selecting users via autocomplete input
 
 ### 🔎 Filtering & Sorting
+
 - View all recognition entries
 - Filter by sender or recipient
 - Sort by most recent
 
 ### 🧠 Backend (FastAPI + PostgreSQL)
+
 - RESTful API endpoints to:
   - Create new recognition entries
   - Fetch all or filtered/sorted entries
 - PostgreSQL database stores only recognition data
 
 ### ✅ Validation & Error Handling
+
 - Frontend and backend form validation
 - Handles network and API errors gracefully with user feedback
 
 ### 🎨 Polished UI
+
 - Built with Next.js and Tailwind CSS
 - Uses Hero UI components and Lucide icons
 
@@ -346,12 +364,14 @@ This employee recognition platform was **designed and developed solely by me** a
 It has since been **adopted by my current employer**, where it is used internally to recognize employees.
 
 Significant customization was done to:
+
 - Standardize application names and categories
 - Replaced terminology with "recognitions"
 - Update icons and UI elements
 - Ensure compliance with copyright and branding standards
 
 Special thanks to the open source communities and technologies that made this possible, including:
+
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [Next.js](https://nextjs.org/)
 - [Hero UI](https://hero-ui.dev/)
