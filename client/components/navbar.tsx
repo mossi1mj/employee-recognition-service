@@ -18,7 +18,6 @@ import { useTheme } from "next-themes";
 import { useIsSSR } from "@react-aria/ssr";
 import { Github, Moon, Sun } from "lucide-react";
 
-import { Logo } from "@/components/icons";
 import { siteConfig } from "@/config/site";
 import {
   Avatar,
@@ -30,6 +29,7 @@ import {
   Tooltip,
 } from "@heroui/react";
 import { useUserContext } from "@/context/UserContext";
+import { Logo } from "./icons";
 
 export const Navbar = () => {
   const { theme, setTheme } = useTheme();
@@ -72,6 +72,21 @@ export const Navbar = () => {
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
+        <Tooltip
+          content="GitHub Repository"
+          placement="bottom"
+          showArrow={true}
+        >
+          <Button
+            as="a"
+            isIconOnly
+            variant="light"
+            size="sm"
+            href={siteConfig.links.github}
+          >
+            <Github size={20} />
+          </Button>
+        </Tooltip>
         <Switch
           endContent={<Moon size={16} />}
           isSelected={theme === "light" || isSSR}
@@ -99,15 +114,6 @@ export const Navbar = () => {
               {user && (
                 <p className="font-semibold">{`${user.firstName} ${user.lastName}`}</p>
               )}
-            </DropdownItem>
-            <DropdownItem
-              key="github"
-              startContent={<Github size={16} />}
-              as={NextLink}
-              href={siteConfig.links.github}
-              target="_blank"
-            >
-              GitHub
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
