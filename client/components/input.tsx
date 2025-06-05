@@ -8,14 +8,16 @@ import { useRecognitionForm } from "@/context/FormContext";
 const Input: React.FC = () => {
   const { results, search, isLoading } = useUserSearch();
   const { input, setInput, setRecipientId } = useRecognitionForm();
-  const [selectedKey, setSelectedKey] = useState<Key | null>(null);
+  const [selectedKey, setSelectedKey] = useState<string | null>(null);
 
   const handleSelection = (key: Key | null) => {
     setSelectedKey(key as string | null);
 
     if (key === null) return;
 
-    const selected = results.find((u) => u.id.toString() === key);
+    const keyStr = key.toString();
+
+    const selected = results.find((u) => u.id.toString() === keyStr);
 
     if (selected) {
       setRecipientId(selected.id);
