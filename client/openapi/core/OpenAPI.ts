@@ -20,7 +20,7 @@ export type OpenAPIConfig = {
 };
 
 export const OpenAPI: OpenAPIConfig = {
-  BASE: "",
+  BASE: process.env.NEXT_PUBLIC_API_BASE_URL || "",
   VERSION: "0.1.0",
   WITH_CREDENTIALS: false,
   CREDENTIALS: "include",
