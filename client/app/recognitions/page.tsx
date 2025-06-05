@@ -22,7 +22,7 @@ import { useUserRecognitions } from "@/hooks/useUserRecognitions";
 import { RecognitionResponse, RecognitionType } from "@/openapi";
 import { formatter } from "@/config/date";
 
-export const RecognitionCard = ({
+const RecognitionCard = ({
   recognition,
 }: {
   recognition: RecognitionResponse;
