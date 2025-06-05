@@ -24,7 +24,7 @@ export default function Home() {
           as="a"
           className="fixed bottom-4 left-4 z-50 shadow-lg"
           color="primary"
-          href="mailto:mossjmyron@gmail.com.com?subject=Feedback for Employee Recognition Platform"
+          href="mailto:mossjmyron@gmail.com?subject=Feedback for Employee Recognition Platform"
           size="lg"
           startContent={<MessageSquareShare size={24} />}
         >
