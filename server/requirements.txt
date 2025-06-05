@@ -1,5 +1,6 @@
 annotated-types==0.7.0
 anyio==4.9.0
+better_profanity==0.7.0
 certifi==2025.4.26
 click==8.2.1
 fastapi==0.115.12
