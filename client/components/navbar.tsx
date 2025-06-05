@@ -34,7 +34,6 @@ import { useUserContext } from "@/context/UserContext";
 export const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const isSSR = useIsSSR();
-
   const { user } = useUserContext();
 
   const onChange = () => {
@@ -43,14 +42,15 @@ export const Navbar = () => {
 
   return (
     <HeroUINavbar maxWidth="xl" position="sticky">
+      {/* Left content */}
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
+          <NextLink href="/" className="flex items-center gap-1">
             <Logo />
             <p className="font-bold text-inherit">EMREC</p>
           </NextLink>
         </NavbarBrand>
-        <ul className="hidden lg:flex gap-4 justify-start ml-2">
+        <ul className="hidden lg:flex gap-4 ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
@@ -58,7 +58,6 @@ export const Navbar = () => {
                   linkStyles({ color: "foreground" }),
                   "data-[active=true]:text-primary data-[active=true]:font-medium"
                 )}
-                color="foreground"
                 href={item.href}
               >
                 {item.label}
@@ -68,21 +67,11 @@ export const Navbar = () => {
         </ul>
       </NavbarContent>
 
+      {/* Right content (desktop) */}
       <NavbarContent
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
-        <Tooltip placement="bottom" content="GitHub Repository">
-          <NextLink
-            href="https://github.com/mossi1mj/employee-recognition-service"
-            target="_blank"
-            passHref
-          >
-            <Button isIconOnly variant="light" aria-label="GitHub">
-              <Github size={20} />
-            </Button>
-          </NextLink>
-        </Tooltip>
         <Switch
           endContent={<Moon size={16} />}
           isSelected={theme === "light" || isSSR}
@@ -92,39 +81,39 @@ export const Navbar = () => {
         />
         <Dropdown placement="bottom-end">
           <DropdownTrigger>
-            {user ? (
-              <Avatar
-                isBordered
-                as="button"
-                className="transition-transform"
-                color="default"
-                name={user?.firstName || "User"}
-                size="sm"
-                src={user?.image}
-              />
-            ) : (
-              <Avatar
-                isBordered
-                as="button"
-                className="transition-transform"
-                color="default"
-                name="User"
-                size="sm"
-                src="https://avatars.githubusercontent.com/u/1?v=4"
-              />
-            )}
+            <Avatar
+              isBordered
+              as="button"
+              className="transition-transform"
+              color="default"
+              name={user?.firstName || "User"}
+              size="sm"
+              src={
+                user?.image || "https://avatars.githubusercontent.com/u/1?v=4"
+              }
+            />
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat">
             <DropdownItem key="profile" className="h-14 gap-2">
               <p className="font-semibold">Signed in as</p>
               {user && (
-                <p className="font-semibold">{`${user?.firstName} ${user?.lastName}`}</p>
+                <p className="font-semibold">{`${user.firstName} ${user.lastName}`}</p>
               )}
+            </DropdownItem>
+            <DropdownItem
+              key="github"
+              startContent={<Github size={16} />}
+              as={NextLink}
+              href={siteConfig.links.github}
+              target="_blank"
+            >
+              GitHub
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </NavbarContent>
 
+      {/* Right content (mobile) */}
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
         <Switch
           endContent={<Moon size={16} />}
@@ -136,25 +125,42 @@ export const Navbar = () => {
         <NavbarMenuToggle />
       </NavbarContent>
 
+      {/* Mobile Menu */}
       <NavbarMenu>
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navMenuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
+            <NavbarMenuItem key={item.href}>
               <Link
+                as={NextLink}
+                href={item.href}
+                size="lg"
                 color={
                   index === 2
                     ? "primary"
                     : index === siteConfig.navMenuItems.length - 1
-                      ? "danger"
+                      ? "secondary"
                       : "foreground"
                 }
-                href="#"
-                size="lg"
+                className="font-semibold"
               >
                 {item.label}
               </Link>
             </NavbarMenuItem>
           ))}
+
+          <NavbarMenuItem>
+            <Link
+              as={NextLink}
+              href={siteConfig.links.github}
+              target="_blank"
+              size="lg"
+              color="primary"
+            >
+              <span className="flex items-center gap-2 font-semibold">
+                <Github size={16} /> GitHub
+              </span>
+            </Link>
+          </NavbarMenuItem>
         </div>
       </NavbarMenu>
     </HeroUINavbar>

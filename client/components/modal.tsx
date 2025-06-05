@@ -12,9 +12,11 @@ import {
   CardHeader,
   AvatarGroup,
   Avatar,
+  Alert,
 } from "@heroui/react";
 import { RecognitionResponse, RecognitionType } from "@/openapi";
 import { formatter } from "@/config/date";
+import { ThumbsUp, Send } from "lucide-react";
 
 interface RecognitionModalProps {
   isOpen: boolean;
@@ -24,7 +26,35 @@ interface RecognitionModalProps {
   error: Error | null;
   type?: RecognitionType;
   homePage: boolean;
+  name?: string;
 }
+
+const EmptyState = ({
+  type,
+}: {
+  type: RecognitionType.RECEIVED | RecognitionType.SENT;
+}) => (
+  <div className="flex flex-col items-center justify-center py-12 text-center">
+    <div className="bg-gradient-to-br from-primary to-secondary rounded-full p-6 mb-4">
+      {type === RecognitionType.RECEIVED ? (
+        <ThumbsUp className="text-secondary" size={32} />
+      ) : (
+        <Send className="text-secondary" size={32} />
+      )}
+    </div>
+    <h3 className="text-2xl font-semibold mb-2">
+      {type === RecognitionType.RECEIVED
+        ? "No recognition received yet"
+        : "No recognition sent yet"}
+    </h3>
+    <p className="text-gray-600 max-w-xs">
+      {type === RecognitionType.RECEIVED
+        ? "This person has not yet been recognized for their contributions."
+        : "This person has not sent any recognition yet."}
+    </p>
+  </div>
+);
+
 const RecognitionModal: React.FC<RecognitionModalProps> = ({
   isOpen,
   onClose,
@@ -33,6 +63,7 @@ const RecognitionModal: React.FC<RecognitionModalProps> = ({
   error,
   type,
   homePage,
+  name,
 }) => {
   const { onOpenChange } = useDisclosure({ isOpen, onClose });
 
@@ -53,8 +84,7 @@ const RecognitionModal: React.FC<RecognitionModalProps> = ({
                     type === RecognitionType.SENT
                       ? "Recognition Sent"
                       : "Recognition Received"
-                  } by
-      ${name}`}
+                  } by ${name}`}
             </ModalHeader>
             <ModalBody>
               <div className="w-full flex justify-center">
@@ -62,7 +92,13 @@ const RecognitionModal: React.FC<RecognitionModalProps> = ({
                   {isLoading ? (
                     <Spinner label="Loading recognition data..." />
                   ) : error ? (
-                    <p>Error: {error.message}</p>
+                    <Alert title={error.message} />
+                  ) : data.length === 0 && type ? (
+                    <EmptyState
+                      type={
+                        type as RecognitionType.SENT | RecognitionType.RECEIVED
+                      }
+                    />
                   ) : (
                     data.map((recognition) => (
                       <Card key={recognition.id} className="w-full mb-1">
@@ -81,7 +117,7 @@ const RecognitionModal: React.FC<RecognitionModalProps> = ({
                               </p>
                               <p className="text-form-label text-gray-600">
                                 {formatter.format(
-                                  new Date(recognition?.created_at),
+                                  new Date(recognition?.created_at)
                                 )}
                               </p>
                             </div>
