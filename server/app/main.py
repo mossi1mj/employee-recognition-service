@@ -9,6 +9,8 @@ from database.create_tables import init_models
 
 load_dotenv()
 
+origins = os.getenv("CORS_ORIGINS", "").split(",")
+
 app = FastAPI()
 
 @app.on_event("startup")
@@ -21,7 +23,7 @@ app.include_router(ws_router)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Or ["*"] for dev
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
