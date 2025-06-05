@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 export const actionCodeSettings = {
-  url: "http://localhost:3000",
+  url: process.env.NEXT_PUBLIC_FIREBASE_REDIRECT_URL || "",
   handleCodeInApp: true,
 };
 
