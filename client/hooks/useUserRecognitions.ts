@@ -4,7 +4,7 @@ import {
   RecognitionResponse,
   RecognitionService,
   RecognitionType,
-} from "@/config/openapi_client";
+} from "@/openapi";
 
 const fetchUserRecognitions = async (
   userId: number,
@@ -28,7 +28,7 @@ export const useUserRecognitions = (
 
   const { data, error, isLoading } = useSWR(
     shouldFetch ? ["user-recognitions", userId, type] : null,
-    () => fetchUserRecognitions(userId!, type),
+    () => fetchUserRecognitions(userId!, type)
   );
 
   return { recognitions: data, error, isLoading };

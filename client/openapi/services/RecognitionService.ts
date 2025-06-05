@@ -68,7 +68,7 @@ export class RecognitionService {
      */
     public static getUserRecognitionsRecognitionUserUserIdGet(
         userId: number,
-        type: RecognitionType,
+        type: RecognitionType = 'all',
         limit?: (number | null),
         skip?: number,
     ): CancelablePromise<Array<RecognitionResponse>> {

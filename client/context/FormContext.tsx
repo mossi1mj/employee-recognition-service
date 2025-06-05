@@ -2,10 +2,7 @@
 
 import { createContext, useContext, useState, type ReactNode } from "react";
 
-import {
-  RecognitionCategory,
-  RecognitionCreate,
-} from "@/config/openapi_client";
+import { RecognitionCategory, RecognitionCreate } from "@/openapi";
 
 type FormValues = Omit<RecognitionCreate, "sender_id">;
 

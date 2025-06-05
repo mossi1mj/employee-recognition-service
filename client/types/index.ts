@@ -16,3 +16,7 @@ export type UseRecognitionsOptions = {
   limit?: number | null;
   skip?: number | null;
 };
+
+export type UseFilteredUsersOptions = {
+  userId?: number | null;
+};

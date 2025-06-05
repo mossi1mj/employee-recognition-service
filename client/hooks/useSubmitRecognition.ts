@@ -2,11 +2,11 @@ import { useState } from "react";
 
 import { useConfetti } from "./useConfetti";
 
-import { RecognitionService } from "@/config/openapi_client";
+import { RecognitionService } from "@/openapi";
 import { useRecognitionForm } from "@/context/FormContext";
 import { useUserContext } from "@/context/UserContext";
 import { recognitionSchema } from "@/config/zod";
-import { addToast, toast } from "@heroui/react";
+import { addToast } from "@heroui/react";
 
 export const useSubmitRecognition = () => {
   const { fireConfetti } = useConfetti();
@@ -65,11 +65,20 @@ export const useSubmitRecognition = () => {
         color: "success",
       });
     } catch (err: any) {
-      setError("Something went wrong.");
+      let message = "Something went wrong.";
+      let title = "Policy Violation Detected";
+
+      if (err?.body?.detail && err?.status === 400) {
+        title = `Policy Violation`;
+        message = `${err.body.detail}`;
+      } else if (err?.message) {
+        message = err.message;
+      }
+
+      setError(message);
       addToast({
-        title: "Error",
-        description: err.message || "Failed to send recognition.",
-        color: "danger",
+        title,
+        description: message,
       });
     } finally {
       setLoading(false);

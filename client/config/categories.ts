@@ -1,4 +1,4 @@
-import { RecognitionCategory } from "@/config/openapi_client";
+import { RecognitionCategory } from "@/openapi";
 
 export const recognitionCategoryMeta: {
   [key in RecognitionCategory]: {

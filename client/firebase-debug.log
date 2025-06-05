@@ -1,0 +1,302 @@
+[debug] [2025-06-02T19:58:47.901Z] ----------------------------------------------------------------------
+[debug] [2025-06-02T19:58:47.903Z] Command:       /opt/homebrew/Cellar/node/23.11.0/bin/node /opt/homebrew/bin/firebase emulators:start
+[debug] [2025-06-02T19:58:47.903Z] CLI Version:   14.5.1
+[debug] [2025-06-02T19:58:47.903Z] Platform:      darwin
+[debug] [2025-06-02T19:58:47.903Z] Node Version:  v23.11.0
+[debug] [2025-06-02T19:58:47.904Z] Time:          Mon Jun 02 2025 15:58:47 GMT-0400 (Eastern Daylight Time)
+[debug] [2025-06-02T19:58:47.904Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-06-02T19:58:47.991Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-06-02T19:58:47.991Z] > authorizing via signed-in user (mossjmyron@gmail.com)
+[info] i  emulators: Starting emulators: auth {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth"}}
+[debug] [2025-06-02T19:58:48.198Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-06-02T19:58:48.198Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-06-02T19:58:48.198Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2025-06-02T19:58:48.201Z] [hub] writing locator at /var/folders/qc/pz0zg50x6x5gk5mbh21k30tm0000gp/T/hub-glassy-droplet-347916.json
+[info] i  ui: downloading ui-v1.15.0.zip... {"metadata":{"emulator":{"name":"ui"},"message":"downloading ui-v1.15.0.zip..."}}
+[debug] [2025-06-02T19:58:50.295Z] >>> [apiv2][query] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.15.0.zip 
+[debug] [2025-06-02T19:58:50.417Z] <<< [apiv2][status] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.15.0.zip 200
+[debug] [2025-06-02T19:58:50.417Z] <<< [apiv2][body] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.15.0.zip [stream]
+[debug] [2025-06-02T19:58:50.670Z] Data is 3538469
+[debug] [2025-06-02T19:58:50.670Z] [unzip] Entry: client/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2025-06-02T19:58:50.670Z] [unzip] Processing entry: client/
+[debug] [2025-06-02T19:58:50.670Z] [unzip] mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/
+[debug] [2025-06-02T19:58:50.671Z] [unzip] Entry: client/favicon-16x16.png (compressed_size=293 bytes, uncompressed_size=293 bytes)
+[debug] [2025-06-02T19:58:50.671Z] [unzip] Processing entry: client/favicon-16x16.png
+[debug] [2025-06-02T19:58:50.671Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-06-02T19:58:50.671Z] [unzip] Writing file: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/favicon-16x16.png
+[debug] [2025-06-02T19:58:50.671Z] [unzip] Entry: client/safari-pinned-tab.svg (compressed_size=1433 bytes, uncompressed_size=2611 bytes)
+[debug] [2025-06-02T19:58:50.671Z] [unzip] Processing entry: client/safari-pinned-tab.svg
+[debug] [2025-06-02T19:58:50.671Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-06-02T19:58:50.671Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/safari-pinned-tab.svg
+[debug] [2025-06-02T19:58:50.673Z] [unzip] Entry: client/favicon.ico (compressed_size=2933 bytes, uncompressed_size=13294 bytes)
+[debug] [2025-06-02T19:58:50.673Z] [unzip] Processing entry: client/favicon.ico
+[debug] [2025-06-02T19:58:50.673Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-06-02T19:58:50.673Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/favicon.ico
+[debug] [2025-06-02T19:58:50.674Z] [unzip] Entry: client/index.html (compressed_size=1364 bytes, uncompressed_size=3071 bytes)
+[debug] [2025-06-02T19:58:50.674Z] [unzip] Processing entry: client/index.html
+[debug] [2025-06-02T19:58:50.674Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-06-02T19:58:50.674Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/index.html
+[debug] [2025-06-02T19:58:50.675Z] [unzip] Entry: client/android-chrome-192x192.png (compressed_size=2684 bytes, uncompressed_size=2684 bytes)
+[debug] [2025-06-02T19:58:50.675Z] [unzip] Processing entry: client/android-chrome-192x192.png
+[debug] [2025-06-02T19:58:50.675Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-06-02T19:58:50.675Z] [unzip] Writing file: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/android-chrome-192x192.png
+[debug] [2025-06-02T19:58:50.675Z] [unzip] Entry: client/apple-touch-icon.png (compressed_size=2123 bytes, uncompressed_size=2152 bytes)
+[debug] [2025-06-02T19:58:50.675Z] [unzip] Processing entry: client/apple-touch-icon.png
+[debug] [2025-06-02T19:58:50.675Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-06-02T19:58:50.675Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/apple-touch-icon.png
+[debug] [2025-06-02T19:58:50.676Z] [unzip] Entry: client/android-chrome-512x512.png (compressed_size=5369 bytes, uncompressed_size=5411 bytes)
+[debug] [2025-06-02T19:58:50.676Z] [unzip] Processing entry: client/android-chrome-512x512.png
+[debug] [2025-06-02T19:58:50.676Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-06-02T19:58:50.676Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/android-chrome-512x512.png
+[debug] [2025-06-02T19:58:50.676Z] [unzip] Entry: client/manifest.json (compressed_size=245 bytes, uncompressed_size=551 bytes)
+[debug] [2025-06-02T19:58:50.676Z] [unzip] Processing entry: client/manifest.json
+[debug] [2025-06-02T19:58:50.676Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-06-02T19:58:50.676Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/manifest.json
+[debug] [2025-06-02T19:58:50.677Z] [unzip] Entry: client/robots.txt (compressed_size=26 bytes, uncompressed_size=26 bytes)
+[debug] [2025-06-02T19:58:50.677Z] [unzip] Processing entry: client/robots.txt
+[debug] [2025-06-02T19:58:50.677Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-06-02T19:58:50.677Z] [unzip] Writing file: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/robots.txt
+[debug] [2025-06-02T19:58:50.677Z] [unzip] Entry: client/mstile-150x150.png (compressed_size=2034 bytes, uncompressed_size=2034 bytes)
+[debug] [2025-06-02T19:58:50.677Z] [unzip] Processing entry: client/mstile-150x150.png
+[debug] [2025-06-02T19:58:50.677Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-06-02T19:58:50.677Z] [unzip] Writing file: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/mstile-150x150.png
+[debug] [2025-06-02T19:58:50.677Z] [unzip] Entry: client/assets/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2025-06-02T19:58:50.677Z] [unzip] Processing entry: client/assets/
+[debug] [2025-06-02T19:58:50.677Z] [unzip] mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/
+[debug] [2025-06-02T19:58:50.677Z] [unzip] Entry: client/assets/index-BX-A56oj.js (compressed_size=582089 bytes, uncompressed_size=2092775 bytes)
+[debug] [2025-06-02T19:58:50.677Z] [unzip] Processing entry: client/assets/index-BX-A56oj.js
+[debug] [2025-06-02T19:58:50.677Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets
+[debug] [2025-06-02T19:58:50.677Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/index-BX-A56oj.js
+[debug] [2025-06-02T19:58:50.682Z] [unzip] Entry: client/assets/index-CjB9C900.css (compressed_size=35979 bytes, uncompressed_size=298654 bytes)
+[debug] [2025-06-02T19:58:50.682Z] [unzip] Processing entry: client/assets/index-CjB9C900.css
+[debug] [2025-06-02T19:58:50.682Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets
+[debug] [2025-06-02T19:58:50.682Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/index-CjB9C900.css
+[debug] [2025-06-02T19:58:50.683Z] [unzip] Entry: client/assets/index-BX-A56oj.js.map (compressed_size=2362482 bytes, uncompressed_size=10036679 bytes)
+[debug] [2025-06-02T19:58:50.683Z] [unzip] Processing entry: client/assets/index-BX-A56oj.js.map
+[debug] [2025-06-02T19:58:50.683Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets
+[debug] [2025-06-02T19:58:50.683Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/index-BX-A56oj.js.map
+[debug] [2025-06-02T19:58:50.700Z] [unzip] Entry: client/assets/extensions/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2025-06-02T19:58:50.700Z] [unzip] Processing entry: client/assets/extensions/
+[debug] [2025-06-02T19:58:50.700Z] [unzip] mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/extensions/
+[debug] [2025-06-02T19:58:50.700Z] [unzip] Entry: client/assets/extensions/default-extension.png (compressed_size=1646 bytes, uncompressed_size=1657 bytes)
+[debug] [2025-06-02T19:58:50.700Z] [unzip] Processing entry: client/assets/extensions/default-extension.png
+[debug] [2025-06-02T19:58:50.700Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/extensions
+[debug] [2025-06-02T19:58:50.700Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/extensions/default-extension.png
+[debug] [2025-06-02T19:58:50.701Z] [unzip] Entry: client/assets/img/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2025-06-02T19:58:50.701Z] [unzip] Processing entry: client/assets/img/
+[debug] [2025-06-02T19:58:50.701Z] [unzip] mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/img/
+[debug] [2025-06-02T19:58:50.701Z] [unzip] Entry: client/assets/img/database.png (compressed_size=29449 bytes, uncompressed_size=29988 bytes)
+[debug] [2025-06-02T19:58:50.701Z] [unzip] Processing entry: client/assets/img/database.png
+[debug] [2025-06-02T19:58:50.701Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/img
+[debug] [2025-06-02T19:58:50.701Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/img/database.png
+[debug] [2025-06-02T19:58:50.701Z] [unzip] Entry: client/assets/provider-icons/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2025-06-02T19:58:50.701Z] [unzip] Processing entry: client/assets/provider-icons/
+[debug] [2025-06-02T19:58:50.701Z] [unzip] mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/
+[debug] [2025-06-02T19:58:50.701Z] [unzip] Entry: client/assets/provider-icons/auth_service_saml.svg (compressed_size=575 bytes, uncompressed_size=1226 bytes)
+[debug] [2025-06-02T19:58:50.701Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_saml.svg
+[debug] [2025-06-02T19:58:50.702Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-06-02T19:58:50.702Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_saml.svg
+[debug] [2025-06-02T19:58:50.702Z] [unzip] Entry: client/assets/provider-icons/auth_service_phone.svg (compressed_size=261 bytes, uncompressed_size=414 bytes)
+[debug] [2025-06-02T19:58:50.702Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_phone.svg
+[debug] [2025-06-02T19:58:50.702Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-06-02T19:58:50.702Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_phone.svg
+[debug] [2025-06-02T19:58:50.702Z] [unzip] Entry: client/assets/provider-icons/auth_service_facebook.svg (compressed_size=289 bytes, uncompressed_size=457 bytes)
+[debug] [2025-06-02T19:58:50.702Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_facebook.svg
+[debug] [2025-06-02T19:58:50.702Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-06-02T19:58:50.702Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_facebook.svg
+[debug] [2025-06-02T19:58:50.702Z] [unzip] Entry: client/assets/provider-icons/auth_service_game_center.svg (compressed_size=991 bytes, uncompressed_size=3921 bytes)
+[debug] [2025-06-02T19:58:50.702Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_game_center.svg
+[debug] [2025-06-02T19:58:50.702Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-06-02T19:58:50.702Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_game_center.svg
+[debug] [2025-06-02T19:58:50.702Z] [unzip] Entry: client/assets/provider-icons/auth_service_apple.svg (compressed_size=230 bytes, uncompressed_size=334 bytes)
+[debug] [2025-06-02T19:58:50.702Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_apple.svg
+[debug] [2025-06-02T19:58:50.702Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-06-02T19:58:50.702Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_apple.svg
+[debug] [2025-06-02T19:58:50.703Z] [unzip] Entry: client/assets/provider-icons/auth_service_github.svg (compressed_size=466 bytes, uncompressed_size=838 bytes)
+[debug] [2025-06-02T19:58:50.703Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_github.svg
+[debug] [2025-06-02T19:58:50.703Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-06-02T19:58:50.703Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_github.svg
+[debug] [2025-06-02T19:58:50.703Z] [unzip] Entry: client/assets/provider-icons/auth_service_mslive.svg (compressed_size=203 bytes, uncompressed_size=378 bytes)
+[debug] [2025-06-02T19:58:50.703Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_mslive.svg
+[debug] [2025-06-02T19:58:50.703Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-06-02T19:58:50.703Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_mslive.svg
+[debug] [2025-06-02T19:58:50.703Z] [unzip] Entry: client/assets/provider-icons/auth_service_yahoo.svg (compressed_size=577 bytes, uncompressed_size=1182 bytes)
+[debug] [2025-06-02T19:58:50.703Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_yahoo.svg
+[debug] [2025-06-02T19:58:50.703Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-06-02T19:58:50.703Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_yahoo.svg
+[debug] [2025-06-02T19:58:50.703Z] [unzip] Entry: client/assets/provider-icons/auth_service_twitter.svg (compressed_size=444 bytes, uncompressed_size=751 bytes)
+[debug] [2025-06-02T19:58:50.703Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_twitter.svg
+[debug] [2025-06-02T19:58:50.703Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-06-02T19:58:50.703Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_twitter.svg
+[debug] [2025-06-02T19:58:50.704Z] [unzip] Entry: client/assets/provider-icons/auth_service_play_games.svg (compressed_size=565 bytes, uncompressed_size=1173 bytes)
+[debug] [2025-06-02T19:58:50.704Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_play_games.svg
+[debug] [2025-06-02T19:58:50.704Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-06-02T19:58:50.704Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_play_games.svg
+[debug] [2025-06-02T19:58:50.704Z] [unzip] Entry: client/assets/provider-icons/auth_service_email.svg (compressed_size=228 bytes, uncompressed_size=326 bytes)
+[debug] [2025-06-02T19:58:50.704Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_email.svg
+[debug] [2025-06-02T19:58:50.704Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-06-02T19:58:50.704Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_email.svg
+[debug] [2025-06-02T19:58:50.704Z] [unzip] Entry: client/assets/provider-icons/auth_service_google.svg (compressed_size=409 bytes, uncompressed_size=720 bytes)
+[debug] [2025-06-02T19:58:50.704Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_google.svg
+[debug] [2025-06-02T19:58:50.704Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-06-02T19:58:50.704Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_google.svg
+[debug] [2025-06-02T19:58:50.704Z] [unzip] Entry: client/assets/provider-icons/auth_service_oidc.svg (compressed_size=414 bytes, uncompressed_size=858 bytes)
+[debug] [2025-06-02T19:58:50.704Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_oidc.svg
+[debug] [2025-06-02T19:58:50.704Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-06-02T19:58:50.704Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_oidc.svg
+[debug] [2025-06-02T19:58:50.704Z] [unzip] Entry: client/browserconfig.xml (compressed_size=491 bytes, uncompressed_size=822 bytes)
+[debug] [2025-06-02T19:58:50.704Z] [unzip] Processing entry: client/browserconfig.xml
+[debug] [2025-06-02T19:58:50.704Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-06-02T19:58:50.704Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/browserconfig.xml
+[debug] [2025-06-02T19:58:50.705Z] [unzip] Entry: client/favicon-32x32.png (compressed_size=475 bytes, uncompressed_size=475 bytes)
+[debug] [2025-06-02T19:58:50.705Z] [unzip] Processing entry: client/favicon-32x32.png
+[debug] [2025-06-02T19:58:50.705Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-06-02T19:58:50.705Z] [unzip] Writing file: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/client/favicon-32x32.png
+[debug] [2025-06-02T19:58:50.705Z] [unzip] Entry: server/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2025-06-02T19:58:50.705Z] [unzip] Processing entry: server/
+[debug] [2025-06-02T19:58:50.705Z] [unzip] mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/server/
+[debug] [2025-06-02T19:58:50.705Z] [unzip] Entry: server/server.mjs.map (compressed_size=217845 bytes, uncompressed_size=944978 bytes)
+[debug] [2025-06-02T19:58:50.705Z] [unzip] Processing entry: server/server.mjs.map
+[debug] [2025-06-02T19:58:50.705Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/server
+[debug] [2025-06-02T19:58:50.705Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/server/server.mjs.map
+[debug] [2025-06-02T19:58:50.706Z] [unzip] Entry: server/server.mjs (compressed_size=276407 bytes, uncompressed_size=933701 bytes)
+[debug] [2025-06-02T19:58:50.706Z] [unzip] Processing entry: server/server.mjs
+[debug] [2025-06-02T19:58:50.706Z] [unzip] else mkdir: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/server
+[debug] [2025-06-02T19:58:50.706Z] [unzip] deflating: /Users/myronmoss/.cache/firebase/emulators/ui-v1.15.0/server/server.mjs
+[debug] [2025-06-02T19:58:50.711Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────────┬────────────────┬────────────────────────────┐
+│ Emulator       │ Host:Port      │ View in Emulator UI        │
+├────────────────┼────────────────┼────────────────────────────┤
+│ Authentication │ 127.0.0.1:9099 │ http://127.0.0.1:4000/auth │
+└────────────────┴────────────────┴────────────────────────────┘
+  Emulator Hub host: 127.0.0.1 port: 4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[warn] ⚠  Received a signed JWT. Auth Emulator does not validate JWTs and IS NOT SECURE {"metadata":{"emulator":{"name":"auth"},"message":"Received a signed JWT. Auth Emulator does not validate JWTs and IS NOT SECURE"}}
+[info] i  To verify the phone number +12345678910, use the code 291117. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 291117."}}
+[info] i  To verify the phone number +12345678910, use the code 238290. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 238290."}}
+[info] i  To verify the phone number +12345678910, use the code 844996. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 844996."}}
+[info] i  To verify the phone number +12345678910, use the code 267759. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 267759."}}
+[info] i  To verify the phone number +12345678910, use the code 324023. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 324023."}}
+[info] i  To verify the phone number +12345678910, use the code 633832. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 633832."}}
+[info] i  To verify the phone number +12345678910, use the code 573295. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 573295."}}
+[info] i  To verify the phone number +12345678910, use the code 465015. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 465015."}}
+[warn] ⚠  canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web. {"metadata":{"emulator":{"name":"auth"},"message":"canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web."}}
+[info] i  To sign in as mossjmyron@gmail.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=4XsRfOOWzRlL36AJk-SY1MoRoXU8qMwBPulOFbDujGZ_wMhChOI6Cq&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000 {"metadata":{"emulator":{"name":"auth"},"message":"To sign in as mossjmyron@gmail.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=4XsRfOOWzRlL36AJk-SY1MoRoXU8qMwBPulOFbDujGZ_wMhChOI6Cq&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000"}}
+[warn] ⚠  canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web. {"metadata":{"emulator":{"name":"auth"},"message":"canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web."}}
+[info] i  To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=PUylQ-POr-YurZzYP7_g1v1EZUB2mF2eJadIskt6-nPjgzMX-86lF4&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000 {"metadata":{"emulator":{"name":"auth"},"message":"To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=PUylQ-POr-YurZzYP7_g1v1EZUB2mF2eJadIskt6-nPjgzMX-86lF4&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000"}}
+[warn] ⚠  canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web. {"metadata":{"emulator":{"name":"auth"},"message":"canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web."}}
+[info] i  To sign in as email@test.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=koF5wMK8zxl1r_tyMW5ncPx8DaNqbQwPWFLGFuPABplAsHdIwKgmXp&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000 {"metadata":{"emulator":{"name":"auth"},"message":"To sign in as email@test.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=koF5wMK8zxl1r_tyMW5ncPx8DaNqbQwPWFLGFuPABplAsHdIwKgmXp&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000"}}
+[info] i  To verify the phone number +12345678910, use the code 202931. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 202931."}}
+[warn] ⚠  canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web. {"metadata":{"emulator":{"name":"auth"},"message":"canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web."}}
+[info] i  To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=nE3gmcAqwjIVlLjasUtwCUt9N4Bsn_csUEHNlQtNrhaNQIrj0qXyTl&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000 {"metadata":{"emulator":{"name":"auth"},"message":"To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=nE3gmcAqwjIVlLjasUtwCUt9N4Bsn_csUEHNlQtNrhaNQIrj0qXyTl&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000"}}
+[info] i  To verify the phone number +12345678910, use the code 336555. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 336555."}}
+[info] i  To verify the phone number +12345678910, use the code 374762. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 374762."}}
+[info] i  To verify the phone number +12345678910, use the code 371338. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 371338."}}
+[info] i  To verify the phone number +1, use the code 306886. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +1, use the code 306886."}}
+[info] i  To verify the phone number +12345678910, use the code 961231. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 961231."}}
+[info] i  To verify the phone number +12345678910, use the code 723459. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 723459."}}
+[info] i  To verify the phone number +12345678910, use the code 165802. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 165802."}}
+[info] i  To verify the phone number +12345678910, use the code 417740. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 417740."}}
+[info] i  To verify the phone number +12345678910, use the code 630826. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 630826."}}
+[info] i  To verify the phone number +12345678910, use the code 611077. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 611077."}}
+[warn] ⚠  canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web. {"metadata":{"emulator":{"name":"auth"},"message":"canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web."}}
+[info] i  To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=_19zB9Lned5v4HJV1QFIsDNLpBvGI77ROLKrqBk1SBOebEYxVOVaZ5&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000 {"metadata":{"emulator":{"name":"auth"},"message":"To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=_19zB9Lned5v4HJV1QFIsDNLpBvGI77ROLKrqBk1SBOebEYxVOVaZ5&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000"}}
+[info] i  To verify the phone number +12345678910, use the code 436975. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 436975."}}
+[info] i  To verify the phone number +12345678910, use the code 081520. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 081520."}}
+[info] i  To verify the phone number +12345678910, use the code 541605. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 541605."}}
+[info] i  To verify the phone number +12345678910, use the code 178783. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 178783."}}
+[info] i  To verify the phone number +12345678910, use the code 861235. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 861235."}}
+[info] i  To verify the phone number +12345678910, use the code 077530. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 077530."}}
+[info] i  To verify the phone number +12345678910, use the code 276697. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 276697."}}
+[info] i  To verify the phone number +12345678910, use the code 973240. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 973240."}}
+[info] i  To verify the phone number +12345678910, use the code 167960. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 167960."}}
+[info] i  To verify the phone number +12345678910, use the code 830712. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 830712."}}
+[info] i  To verify the phone number +12345678910, use the code 907944. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 907944."}}
+[info] i  To verify the phone number +12345678910, use the code 454809. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 454809."}}
+[info] i  To verify the phone number +12345678910, use the code 389918. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 389918."}}
+[info] i  To verify the phone number +12345678910, use the code 193785. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 193785."}}
+[info] i  To verify the phone number +12345678910, use the code 358937. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 358937."}}
+[info] i  To verify the phone number +12345678910, use the code 890388. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 890388."}}
+[info] i  To verify the phone number +12345678910, use the code 721526. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 721526."}}
+[info] i  To verify the phone number +12345678910, use the code 575163. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 575163."}}
+[info] i  To verify the phone number +12345678910, use the code 302128. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 302128."}}
+[info] i  To verify the phone number +12345678910, use the code 599139. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 599139."}}
+[info] i  To verify the phone number +12345678910, use the code 121141. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 121141."}}
+[info] i  To verify the phone number +12345678910, use the code 713859. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 713859."}}
+[info] i  To verify the phone number +12345678910, use the code 552160. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 552160."}}
+[info] i  To verify the phone number +12345678910, use the code 333549. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 333549."}}
+[info] i  To verify the phone number +12345678910, use the code 720037. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 720037."}}
+[info] i  To verify the phone number +12345678910, use the code 186721. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 186721."}}
+[info] i  To verify the phone number +12345678910, use the code 892511. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 892511."}}
+[info] i  To verify the phone number +12345678910, use the code 480635. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 480635."}}
+[info] i  To verify the phone number +12345678910, use the code 389375. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 389375."}}
+[info] i  To verify the phone number +12345678910, use the code 304303. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 304303."}}
+[info] i  To verify the phone number +12345678910, use the code 430884. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 430884."}}
+[info] i  To verify the phone number +12345678910, use the code 607779. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 607779."}}
+[info] i  To verify the phone number +12345678910, use the code 259993. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 259993."}}
+[info] i  To verify the phone number +12345678910, use the code 157443. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 157443."}}
+[info] i  To verify the phone number +12345678910, use the code 631091. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 631091."}}
+[info] i  To verify the phone number +12345678910, use the code 598008. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 598008."}}
+[info] i  To verify the phone number +12345678910, use the code 970197. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 970197."}}
+[info] i  To verify the phone number +12345678910, use the code 010585. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 010585."}}
+[info] i  To verify the phone number +12345678910, use the code 873712. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 873712."}}
+[info] i  To verify the phone number +12345678910, use the code 051153. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 051153."}}
+[info] i  To verify the phone number +12345678910, use the code 622677. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 622677."}}
+[info] i  To verify the phone number +12345678910, use the code 596940. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 596940."}}
+[info] i  To verify the phone number +12345678910, use the code 581736. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 581736."}}
+[info] i  To verify the phone number +12345678910, use the code 169009. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 169009."}}
+[info] i  To verify the phone number +12345678910, use the code 560014. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 560014."}}
+[info] i  To verify the phone number +12345678910, use the code 111646. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 111646."}}
+[info] i  To verify the phone number +12345678910, use the code 435355. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 435355."}}
+[info] i  To verify the phone number +12345678910, use the code 181632. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 181632."}}
+[info] i  To verify the phone number +12345678910, use the code 434229. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 434229."}}
+[info] i  To verify the phone number +12345678910, use the code 659939. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 659939."}}
+[info] i  To verify the phone number +12345678910, use the code 775486. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 775486."}}
+[info] i  To verify the phone number +12345678910, use the code 301836. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 301836."}}
+[info] i  To verify the phone number +12345678910, use the code 004900. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 004900."}}
+[info] i  To verify the phone number +12345678910, use the code 873989. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 873989."}}
+[info] i  To verify the phone number +12345678910, use the code 496148. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 496148."}}
+[info] i  To verify the phone number +12345678910, use the code 678266. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 678266."}}
+[info] i  To verify the phone number +12345678910, use the code 460844. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 460844."}}
+[info] i  To verify the phone number +12345678910, use the code 915248. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 915248."}}
+[info] i  To verify the phone number +12345678910, use the code 568396. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 568396."}}
+[info] i  To verify the phone number +12345678910, use the code 662298. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 662298."}}
+[info] i  To verify the phone number +12345678910, use the code 266040. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 266040."}}
+[info] i  To verify the phone number +12345678910, use the code 438043. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 438043."}}
+[info] i  To verify the phone number +12345678910, use the code 856681. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 856681."}}
+[info] i  To verify the phone number +12345678910, use the code 341934. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 341934."}}
+[info] i  To verify the phone number +12345678910, use the code 278467. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 278467."}}
+[warn] ⚠  canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web. {"metadata":{"emulator":{"name":"auth"},"message":"canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web."}}
+[info] i  To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=YPidLXzncwi342owX_Q5qzFN0V7Dwzsj_5b1cHMGavVxTkkk6FkLm3&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000 {"metadata":{"emulator":{"name":"auth"},"message":"To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=YPidLXzncwi342owX_Q5qzFN0V7Dwzsj_5b1cHMGavVxTkkk6FkLm3&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000"}}
+[warn] ⚠  canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web. {"metadata":{"emulator":{"name":"auth"},"message":"canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web."}}
+[info] i  To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=enHXLgaI2WXaNfILHLlLk9Ygieoxz2VmL00RVN1v9Ttz8GW4Zq575L&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000 {"metadata":{"emulator":{"name":"auth"},"message":"To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=enHXLgaI2WXaNfILHLlLk9Ygieoxz2VmL00RVN1v9Ttz8GW4Zq575L&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000"}}
+[info] i  To verify the phone number +12345678910, use the code 017253. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 017253."}}
+[warn] ⚠  canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web. {"metadata":{"emulator":{"name":"auth"},"message":"canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web."}}
+[info] i  To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=929KEe8_hmgRMxSnY05oxaQtIshHX45VLgOmZATejHm7jZmRq8efrD&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000 {"metadata":{"emulator":{"name":"auth"},"message":"To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=929KEe8_hmgRMxSnY05oxaQtIshHX45VLgOmZATejHm7jZmRq8efrD&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000"}}
+[warn] ⚠  canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web. {"metadata":{"emulator":{"name":"auth"},"message":"canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web."}}
+[info] i  To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=be6kXKK-RraQVmxxYVHBldAvdZPuSEjZjZKAyZFVr9ld9MgcshlcR7&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000 {"metadata":{"emulator":{"name":"auth"},"message":"To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=be6kXKK-RraQVmxxYVHBldAvdZPuSEjZjZKAyZFVr9ld9MgcshlcR7&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000"}}
+[warn] ⚠  canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web. {"metadata":{"emulator":{"name":"auth"},"message":"canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web."}}
+[info] i  To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=AtYmhNMSW_h2EkczhLM3BlBIzCTSYxdDGdkbz1Kny7Xc6237IROiqO&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000 {"metadata":{"emulator":{"name":"auth"},"message":"To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=AtYmhNMSW_h2EkczhLM3BlBIzCTSYxdDGdkbz1Kny7Xc6237IROiqO&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000"}}
+[info] i  To verify the phone number +12345678910, use the code 680984. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 680984."}}
+[warn] ⚠  canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web. {"metadata":{"emulator":{"name":"auth"},"message":"canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web."}}
+[info] i  To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=oK3eeMeJ5oFREN-EL6z9Rt9EYDT68NeZTu2cu4VabRn8YCjWSjA6IT&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000 {"metadata":{"emulator":{"name":"auth"},"message":"To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=oK3eeMeJ5oFREN-EL6z9Rt9EYDT68NeZTu2cu4VabRn8YCjWSjA6IT&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000"}}
+[warn] ⚠  canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web. {"metadata":{"emulator":{"name":"auth"},"message":"canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web."}}
+[info] i  To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=MKaWXEz7mfBY2Yuux6pbKwINweTyHqmXXq7-Oju4qG29aHhuXHUUmH&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000 {"metadata":{"emulator":{"name":"auth"},"message":"To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=MKaWXEz7mfBY2Yuux6pbKwINweTyHqmXXq7-Oju4qG29aHhuXHUUmH&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000"}}
+[warn] ⚠  canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web. {"metadata":{"emulator":{"name":"auth"},"message":"canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web."}}
+[info] i  To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=fvVxxMyqIi5b_rq4CUf0LdIvfA-IUAxXwaASxerdOclpoeyproOqh7&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000 {"metadata":{"emulator":{"name":"auth"},"message":"To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=fvVxxMyqIi5b_rq4CUf0LdIvfA-IUAxXwaASxerdOclpoeyproOqh7&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000"}}
+[warn] ⚠  canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web. {"metadata":{"emulator":{"name":"auth"},"message":"canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web."}}
+[info] i  To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=mg8hu83timIybLIjttsxGG3ic14uymmMFV0PCptQ6KWrRH5BSI1pbN&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000 {"metadata":{"emulator":{"name":"auth"},"message":"To sign in as test@email.com, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=mg8hu83timIybLIjttsxGG3ic14uymmMFV0PCptQ6KWrRH5BSI1pbN&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000"}}
+[info] i  To verify the phone number +12345678910, use the code 136735. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 136735."}}
+[info] i  To verify the phone number +12345678910, use the code 826102. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 826102."}}
+[info] i  To verify the phone number +12345678910, use the code 976638. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 976638."}}
+[info] i  To verify the phone number +12345678910, use the code 415657. {"metadata":{"emulator":{"name":"auth"},"message":"To verify the phone number +12345678910, use the code 415657."}}

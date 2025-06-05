@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
+  addToast,
   Avatar,
   AvatarGroup,
   Button,
@@ -15,6 +16,9 @@ import RecognitionModal from "./modal";
 
 import { useRecognitions } from "@/hooks/useRecognitions";
 import { formatter } from "@/config/date";
+import { useLiveRecognitions } from "@/hooks/useLiveRecognitions";
+import { useWebSocket } from "@/hooks/useWebSocket";
+import { url } from "@/config/site";
 
 const FeedSkeleton: React.FC = () => (
   <Card className="mb-2">
@@ -31,10 +35,13 @@ const FeedSkeleton: React.FC = () => (
 );
 
 export const Feed: React.FC = () => {
-  const { recognitions, isLoading, error } = useRecognitions({
-    senderId: null,
-    recipientId: null,
-  });
+  const {
+    recognitions: liveRecognitions,
+    loading,
+    error,
+  } = useLiveRecognitions();
+  const { recognitions, isLoading, error: failed } = useRecognitions();
+  const { isConnected } = useWebSocket(url);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -44,31 +51,35 @@ export const Feed: React.FC = () => {
   return (
     <>
       <Card>
-        <CardHeader
-          id="talk-of-town-feed"
-          className="pb-0 pt-4 px-4 flex justify-between items-center"
-        >
-          <h2 className="text-2xl font-bold">Talk of the Town</h2>
+        <CardHeader className="pb-0 pt-4 px-4 flex justify-between items-center">
+          <h2 className="text-2xl font-bold">
+            <span className="block sm:hidden">Feed</span>
+            <span className="hidden sm:block">Talk of the Town</span>
+          </h2>
           <div className="flex gap-2">
-            <div className="flex items-center">
-              <motion.div
-                className="w-2 h-2 bg-green-500 rounded-full mr-2"
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [1, 0.5, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-              <span className="text-sm font-semibold text-green-500">LIVE</span>
-            </div>
+            {isConnected && (
+              <div className="flex items-center">
+                <motion.div
+                  className="w-2 h-2 bg-green-500 rounded-full mr-2"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [1, 0.5, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+                <span className="text-sm font-semibold text-green-500">
+                  LIVE
+                </span>
+              </div>
+            )}
             <Button
-              variant="ghost"
-              size="sm"
               color="primary"
+              size="sm"
+              variant="ghost"
               onPress={openModal}
             >
               View All
@@ -85,11 +96,11 @@ export const Feed: React.FC = () => {
             >
               <Card className="bg-default-100 text-500">
                 <CardBody>
-                  <p>{error.message || "Unexpected Error Occured."}</p>
+                  <p>{error || "Unexpected Error Occured."}</p>
                 </CardBody>
               </Card>
             </motion.div>
-          ) : isLoading ? (
+          ) : loading ? (
             <div className="space-y-2">
               {[...Array(5)].map((_, index) => (
                 <FeedSkeleton key={index} />
@@ -98,7 +109,7 @@ export const Feed: React.FC = () => {
           ) : (
             <div className="space-y-2">
               <AnimatePresence initial={false}>
-                {recognitions?.slice(0, 5).map((item, _) => (
+                {liveRecognitions?.slice(0, 5).map((item, _) => (
                   <motion.div
                     key={item.created_at}
                     initial={{ opacity: 0, y: -20, height: 0 }}
@@ -111,7 +122,6 @@ export const Feed: React.FC = () => {
                       opacity: { duration: 0.2 },
                     }}
                   >
-                    {/* <RecognitionCard recognition={item} message={false} /> */}
                     <Card className="w-full mb-1">
                       <CardHeader className="flex justify-between items-center">
                         <div className="flex items-center gap-3 flex-grow">
@@ -139,11 +149,11 @@ export const Feed: React.FC = () => {
         </CardBody>
       </Card>
       <RecognitionModal
-        page
-        error={error}
+        homePage
+        data={recognitions || []}
+        error={failed}
         isLoading={isLoading}
         isOpen={isModalOpen}
-        recognitionData={recognitions || []}
         onClose={() => setIsModalOpen(false)}
       />
     </>
