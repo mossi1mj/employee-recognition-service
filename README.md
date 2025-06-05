@@ -2,7 +2,7 @@
 
 A modern, full-stack employee recognition platform where teammates can celebrate each other with live updates, personalized feeds, and team insights.
 
-**Live Site:** [em-rec-serv.dev](https://em-rec-serv.dev)
+## Live Site: [Employees Recognition Sercive](https://employee-recognition-9xlt.onrender.com)
 
 ![Next.js](https://img.shields.io/badge/frontend-next.js-000?logo=next.js)
 ![FastAPI](https://img.shields.io/badge/backend-fastapi-009688?logo=fastapi)
