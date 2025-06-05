@@ -21,7 +21,7 @@ import { useRouter } from "next/navigation";
 
 import { useUserContext } from "@/context/UserContext";
 import { useUserRecognitions } from "@/hooks/useUserRecognitions";
-import { recognitionCategoryMeta } from "@/config/category_selector";
+import { recognitionCategoryMeta } from "@/config/categories";
 import { RecognitionType } from "@/openapi";
 
 export const Recent: React.FC = () => {
@@ -35,7 +35,10 @@ export const Recent: React.FC = () => {
   return (
     <Card>
       <CardHeader className="pb-0 pt-4 px-4 flex justify-between items-center">
-        <h2 className="text-2xl font-bold">Recent Recognitions</h2>
+        <h2 className="text-2xl font-bold">
+          <span className="block sm:hidden">Recent</span>
+          <span className="hidden sm:block">Recent Recognitions</span>
+        </h2>
         <Button
           color="primary"
           size="sm"

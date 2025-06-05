@@ -40,21 +40,18 @@ export class UsersService {
     }
     /**
      * Filter Users
-     * @param key Key to filter on (e.g., role)
-     * @param value Value to match (e.g., admin)
+     * @param userId User ID to compare specific key
      * @returns User Successful Response
      * @throws ApiError
      */
     public static filterUsersUsersFilterGet(
-        key: string,
-        value: string,
+        userId: number,
     ): CancelablePromise<Array<User>> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/users/filter',
             query: {
-                'key': key,
-                'value': value,
+                'user_id': userId,
             },
             errors: {
                 422: `Validation Error`,

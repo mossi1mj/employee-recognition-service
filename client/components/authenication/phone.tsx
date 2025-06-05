@@ -10,7 +10,7 @@ import React, { useEffect } from "react";
 import { Smartphone } from "lucide-react";
 
 import { usePhoneAuth } from "@/authentication/usePhoneAuth";
-import { countries } from "@/config/county_codes";
+import { countries } from "@/config/countries";
 import { useAuthContext } from "@/context/AuthContext";
 
 const PhoneAuthentication: React.FC = () => {

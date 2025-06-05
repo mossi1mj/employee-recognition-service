@@ -7,10 +7,11 @@ import {
 } from "firebase/auth";
 
 import { auth } from "./firebase";
-import { countries } from "@/config/county_codes";
+import { countries } from "@/config/countries";
 import { useAuthContext } from "@/context/AuthContext";
 import { RecognitionService, RecognitionType, UsersService } from "@/openapi";
 import { useUserContext } from "@/context/UserContext";
+import { userSignIn } from "./userSignIn";
 
 export const usePhoneAuth = () => {
   const {
@@ -101,20 +102,11 @@ export const usePhoneAuth = () => {
     startTransition(async () => {
       try {
         await confirmationResult?.confirm(otp);
-        const randomUserId = Math.floor(Math.random() * 10) + 1;
-        const user = await UsersService.getUserByIdUsersUserIdGet(randomUserId);
-
-        setUser(user);
-        setIsAuthenticated(true);
-
-        const recognitions =
-          await RecognitionService.getUserRecognitionsRecognitionUserUserIdGet(
-            user.id,
-            RecognitionType.ALL,
-            5
-          );
-
-        setRecognitions(recognitions);
+        await userSignIn({
+          setUser,
+          setIsAuthenticated,
+          setRecognitions,
+        });
       } catch (err: any) {
         addToast({
           title: "OTP Verification Failed",

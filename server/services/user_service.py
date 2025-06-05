@@ -25,7 +25,12 @@ async def fetch_users() -> list[User]:
         response = await client.get("https://dummyjson.com/users")
         data = response.json()["users"]
         return [transform_user(u) for u in data]
-
+    
+async def fetch_user_by_id(user_id: int) -> User:
+    async with httpx.AsyncClient() as client:
+        response = await client.get(f"https://dummyjson.com/users/{user_id}")
+        user = response.json()
+        return transform_user(user)
 
 async def search_users(query: str) -> list[User]:
     async with httpx.AsyncClient() as client:
@@ -34,15 +39,11 @@ async def search_users(query: str) -> list[User]:
         return [transform_user(u) for u in data]
 
 
-async def filter_users(key: str, value: str) -> list[User]:
+async def filter_users(user_id: int) -> list[User]:
     async with httpx.AsyncClient() as client:
-        response = await client.get(f"https://dummyjson.com/users/filter?key={key}&value={value}")
+        key = "role"
+        user = await fetch_user_by_id(user_id)
+        response = await client.get(f"https://dummyjson.com/users/filter?key={key}&value={user.role}")
         data = response.json()["users"]
-        return [transform_user(u) for u in data]
+        return [transform_user(u) for u in data if u["id"] != user.id]
     
-
-async def fetch_user_by_id(user_id: int) -> User:
-    async with httpx.AsyncClient() as client:
-        response = await client.get(f"https://dummyjson.com/users/{user_id}")
-        user = response.json()
-        return transform_user(user)

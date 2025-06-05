@@ -16,10 +16,9 @@ async def search_users(q: str = Query(..., description="Search query string")):
 
 @router.get("/filter", response_model=list[User])
 async def filter_users(
-    key: str = Query(..., description="Key to filter on (e.g., role)"),
-    value: str = Query(..., description="Value to match (e.g., admin)"),
+    user_id: int = Query(..., description="User ID to compare specific key"),
 ):
-    return await user_service.filter_users(key, value)
+    return await user_service.filter_users(user_id)
 
 @router.get("/{user_id}", response_model=User)
 async def get_user_by_id(user_id: int):

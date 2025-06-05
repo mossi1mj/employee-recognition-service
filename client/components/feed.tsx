@@ -51,11 +51,11 @@ export const Feed: React.FC = () => {
   return (
     <>
       <Card>
-        <CardHeader
-          className="pb-0 pt-4 px-4 flex justify-between items-center"
-          id="talk-of-town-feed"
-        >
-          <h2 className="text-2xl font-bold">Talk of the Town</h2>
+        <CardHeader className="pb-0 pt-4 px-4 flex justify-between items-center">
+          <h2 className="text-2xl font-bold">
+            <span className="block sm:hidden">Feed</span>
+            <span className="hidden sm:block">Talk of the Town</span>
+          </h2>
           <div className="flex gap-2">
             {isConnected && (
               <div className="flex items-center">

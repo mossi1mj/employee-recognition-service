@@ -10,15 +10,161 @@ export const Logo: React.FC<IconSvgProps> = ({
   <svg
     fill="none"
     height={size || height}
-    viewBox="0 0 32 32"
     width={size || width}
+    viewBox="0 0 500 510"
     {...props}
   >
-    <path
-      clipRule="evenodd"
-      d="M17.6482 10.1305L15.8785 7.02583L7.02979 22.5499H10.5278L17.6482 10.1305ZM19.8798 14.0457L18.11 17.1983L19.394 19.4511H16.8453L15.1056 22.5499H24.7272L19.8798 14.0457Z"
-      fill="currentColor"
-      fillRule="evenodd"
+    <linearGradient
+      id="SVGID_1_"
+      gradientUnits="userSpaceOnUse"
+      x1="-28.7423"
+      y1="631.582"
+      x2="-28.7423"
+      y2="579.3051"
+      gradientTransform="matrix(7.8769 0 0 -7.8769 364.0537 4969.6694)"
+    >
+      <stop offset="0" style={{ stopColor: "#29D3DA" }} />
+      <stop offset="0.519" style={{ stopColor: "#0077FF" }} />
+      <stop offset="0.999" style={{ stopColor: "#064093" }} />
+      <stop offset="1" style={{ stopColor: "#084698" }} />
+    </linearGradient>
+    <polygon
+      fill="url(#SVGID_1_)"
+      points="224.492,0 50.814,100.281 224.492,200.546"
+    />
+    <linearGradient
+      id="SVGID_2_"
+      gradientUnits="userSpaceOnUse"
+      x1="-37.5802"
+      y1="577.7802"
+      x2="-33.0712"
+      y2="603.1651"
+      gradientTransform="matrix(7.8769 0 0 -7.8769 364.0537 4969.6694)"
+    >
+      <stop offset="0.012" style={{ stopColor: "#E0B386" }} />
+      <stop offset="0.519" style={{ stopColor: "#DA498C" }} />
+      <stop offset="1" style={{ stopColor: "#961484" }} />
+    </linearGradient>
+
+    <polygon
+      fill="url(#SVGID_2_)"
+      points="193.331,252.062 19.692,151.812 19.692,352.319"
+    />
+    <linearGradient
+      id="SVGID_3_"
+      gradientUnits="userSpaceOnUse"
+      x1="0.3052"
+      y1="631.582"
+      x2="0.3052"
+      y2="579.3051"
+      gradientTransform="matrix(7.8769 0 0 -7.8769 364.0537 4969.6694)"
+    >
+      <stop offset="0" style={{ stopColor: "#29D3DA" }} />
+      <stop offset="0.519" style={{ stopColor: "#0077FF" }} />
+      <stop offset="0.999" style={{ stopColor: "#064093" }} />
+      <stop offset="1" style={{ stopColor: "#084698" }} />
+    </linearGradient>
+
+    <polygon
+      fill="url(#SVGID_3_)"
+      points="279.631,0 279.631,200.523 453.285,100.265"
+    />
+    <g>
+      <linearGradient
+        id="SVGID_4_"
+        gradientUnits="userSpaceOnUse"
+        x1="0.3067"
+        y1="552.585"
+        x2="0.3067"
+        y2="575.035"
+        gradientTransform="matrix(7.8769 0 0 -7.8769 364.0537 4969.6694)"
+      >
+        <stop offset="0" style={{ stopColor: "#29D3DA" }} />
+        <stop offset="0.519" style={{ stopColor: "#0077FF" }} />
+        <stop offset="0.999" style={{ stopColor: "#064093" }} />
+        <stop offset="1" style={{ stopColor: "#084698" }} />
+      </linearGradient>
+
+      <polygon
+        fill="url(#SVGID_4_)"
+        points="279.631,303.561 279.631,504.123 453.309,403.842"
+      />
+
+      <linearGradient
+        id="SVGID_5_"
+        gradientUnits="userSpaceOnUse"
+        x1="-28.7438"
+        y1="552.585"
+        x2="-28.7438"
+        y2="575.035"
+        gradientTransform="matrix(7.8769 0 0 -7.8769 364.0537 4969.6694)"
+      >
+        <stop offset="0" style={{ stopColor: "#29D3DA" }} />
+        <stop offset="0.519" style={{ stopColor: "#0077FF" }} />
+        <stop offset="0.999" style={{ stopColor: "#064093" }} />
+        <stop offset="1" style={{ stopColor: "#084698" }} />
+      </linearGradient>
+
+      <polygon
+        fill="url(#SVGID_5_)"
+        points="224.492,303.561 50.79,403.826 224.492,504.123"
+      />
+    </g>
+    <linearGradient
+      id="SVGID_6_"
+      gradientUnits="userSpaceOnUse"
+      x1="2.2363"
+      y1="581.1854"
+      x2="6.7503"
+      y2="606.5714"
+      gradientTransform="matrix(7.8769 0 0 -7.8769 364.0537 4969.6694)"
+    >
+      <stop offset="0.012" style={{ stopColor: "#E0B386" }} />
+      <stop offset="0.519" style={{ stopColor: "#DA498C" }} />
+      <stop offset="1" style={{ stopColor: "#961484" }} />
+    </linearGradient>
+
+    <polygon
+      fill="url(#SVGID_6_)"
+      points="310.745,252.054 484.431,352.327 484.431,151.78"
+    />
+
+    <linearGradient
+      gradientTransform="matrix(7.8769 0 0 -7.8769 364.0537 4969.6694)"
+      gradientUnits="userSpaceOnUse"
+      id="SVGID_7_"
+      x1="-35.9046"
+      x2="-32.9566"
+      y1="580.015"
+      y2="596.611"
+    >
+      <stop offset="0.012" style={{ stopColor: "#E0B386" }} />
+      <stop offset="0.519" style={{ stopColor: "#DA498C" }} />
+      <stop offset="1" style={{ stopColor: "#961484" }} />
+    </linearGradient>
+
+    <polygon
+      fill="url(#SVGID_7_)"
+      points="193.331,252.062 19.692,265.224 19.692,352.319"
+    />
+
+    <linearGradient
+      id="SVGID_8_"
+      gradientUnits="userSpaceOnUse"
+      x1="2.9508"
+      y1="585.1951"
+      x2="4.9098"
+      y2="596.2252"
+      gradientTransform="matrix(7.8769 0 0 -7.8769 364.0537 4969.6694)"
+    >
+      <stop offset="0.012" style={{ stopColor: "#E0B386" }} />
+      <stop offset="0.519" style={{ stopColor: "#DA498C" }} />
+      <stop offset="1" style={{ stopColor: "#961484" }} />
+    </linearGradient>
+
+    <polygon
+      fill="url(#SVGID_8_)"
+      points="310.745,252.054 484.431,352.327 484.431,265.185"
     />
   </svg>
 );
@@ -107,7 +253,6 @@ export const FacebookIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-
 export const AppleIcon: React.FC<IconSvgProps> = ({
   size = 24,
   width,
@@ -125,7 +270,6 @@ export const AppleIcon: React.FC<IconSvgProps> = ({
     <path d="M380.844 297.529c.787 84.752 74.349 112.955 75.164 113.314-.622 1.988-11.754 40.191-38.756 79.652-23.343 34.117-47.568 68.107-85.731 68.811-37.499.691-49.557-22.236-92.429-22.236-42.859 0-56.256 21.533-91.753 22.928-36.837 1.395-64.889-36.891-88.424-70.883-48.093-69.53-84.846-196.475-35.496-282.165 24.516-42.554 68.328-69.501 115.882-70.192 36.173-.69 70.315 24.336 92.429 24.336 22.1 0 63.59-30.096 107.208-25.676 18.26.76 69.517 7.376 102.429 55.552-2.652 1.644-61.159 35.704-60.523 106.559M310.369 89.418C329.926 65.745 343.089 32.79 339.498 0 311.308 1.133 277.22 18.785 257 42.445c-18.121 20.952-33.991 54.487-29.709 86.628 31.421 2.431 63.52-15.967 83.078-39.655" />
   </svg>
 );
-
 
 export const GoogleIcon: React.FC<IconSvgProps> = ({
   size = 24,

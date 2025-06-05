@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Button } from "@heroui/button";
 import { useTheme } from "next-themes";
 
-import { recognitionCategoryList } from "@/config/category_selector";
+import { recognitionCategoryList } from "@/config/categories";
 import { useRecognitionForm } from "@/context/FormContext";
 
 export const Category: React.FC = () => {
@@ -29,18 +29,10 @@ export const Category: React.FC = () => {
           className={`p-2 transition-transform hover:scale-105 w-46 h-32 flex-[0_0_calc(33.333%-0.5rem)]
             ${
               selectedCategory === category.key
-                ? isDark
-                  ? "border-2 border-secondary"
-                  : "border-2 border-primary"
+                ? "border-2 border-secondary"
                 : ""
             }`}
-          color={
-            selectedCategory === category.key
-              ? isDark
-                ? "secondary"
-                : "primary"
-              : "default"
-          }
+          color={selectedCategory === category.key ? "secondary" : "default"}
           variant={selectedCategory === category.key ? "flat" : "light"}
           onPress={() => setCategory(category.key)}
         >

@@ -32,6 +32,7 @@ export const Form: React.FC = () => {
         <Input />
         <Category />
         <Textarea
+          className="hidden sm:block"
           label="Message"
           placeholder="Enter your recognition message..."
           value={values.message ?? ""}
@@ -39,7 +40,7 @@ export const Form: React.FC = () => {
           onChange={(e) => setMessage(e.target.value)}
         />
       </CardBody>
-      <CardFooter className="pt-0 pb-4 px-4 flex justify-end">
+      <CardFooter className="pt-2 pb-4 px-4 flex justify-center sm:justify-end">
         <Button
           color="primary"
           disabled={loading}
@@ -52,6 +53,7 @@ export const Form: React.FC = () => {
           }
           variant="solid"
           onPress={submit}
+          className="w-full sm:w-auto"
         >
           Send Recognition
         </Button>

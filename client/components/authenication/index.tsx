@@ -33,6 +33,7 @@ import {
 } from "@/authentication/useSocialAuth";
 import { auth } from "@/authentication/firebase";
 import { RecognitionService, RecognitionType, UsersService } from "@/openapi";
+import { userSignIn } from "@/authentication/userSignIn";
 
 declare global {
   interface Window {
@@ -53,22 +54,11 @@ const Authenticate: React.FC = () => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
         try {
-          const userId = Math.floor(Math.random() * 10) + 1;
-          const user = await UsersService.getUserByIdUsersUserIdGet(userId);
-
-          setUser(user);
-          setIsAuthenticated(true);
-
-          const recognitions =
-            await RecognitionService.getUserRecognitionsRecognitionUserUserIdGet(
-              user.id,
-              RecognitionType.ALL,
-              5
-            );
-
-          setRecognitions(recognitions);
-
-          addToast({ title: "Signed in successfully!" });
+          await userSignIn({
+            setUser,
+            setIsAuthenticated,
+            setRecognitions,
+          });
         } catch (err) {
           addToast({
             title: "Sign In Failed",
